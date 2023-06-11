@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\dmsor\\Documents\\code\\project\\webapp\\artifact_database.csproj",
+      "projectUniqueName": "C:\\Users\\dmsor\\Documents\\code\\project_01\\webapp_01\\artifact_database.csproj",
       "projectName": "artifact_database",
-      "projectPath": "C:\\Users\\dmsor\\Documents\\code\\project\\webapp\\artifact_database.csproj",
+      "projectPath": "C:\\Users\\dmsor\\Documents\\code\\project_01\\webapp_01\\artifact_database.csproj",
       "packagesPath": "C:\\Users\\dmsor\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dmsor\\Documents\\code\\project\\webapp\\obj\\",
+      "outputPath": "C:\\Users\\dmsor\\Documents\\code\\project_01\\webapp_01\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\dmsor\\AppData\\Roaming\\NuGet\\NuGet.Config",

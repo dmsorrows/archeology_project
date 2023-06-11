@@ -1,19 +1,19 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\dmsor\\Documents\\code\\project\\webapp\\wwwroot\\favicon.ico",
+      "Id": "C:\\Users\\dmsor\\Documents\\code\\project_01\\webapp_01\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "C:\\Users\\dmsor\\Documents\\code\\project\\webapp\\wwwroot\\index.css",
+      "Id": "C:\\Users\\dmsor\\Documents\\code\\project_01\\webapp_01\\wwwroot\\index.css",
       "PackagePath": "staticwebassets\\index.css"
     },
     {
-      "Id": "C:\\Users\\dmsor\\Documents\\code\\project\\webapp\\wwwroot\\index.html",
+      "Id": "C:\\Users\\dmsor\\Documents\\code\\project_01\\webapp_01\\wwwroot\\index.html",
       "PackagePath": "staticwebassets\\index.html"
     },
     {
-      "Id": "C:\\Users\\dmsor\\Documents\\code\\project\\webapp\\wwwroot\\index.js",
+      "Id": "C:\\Users\\dmsor\\Documents\\code\\project_01\\webapp_01\\wwwroot\\index.js",
       "PackagePath": "staticwebassets\\index.js"
     },
     {

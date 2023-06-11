@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Data.SqlClient;
 
-namespace webapi.Controllers;
+namespace webapi_01.Controllers;
 
 [ApiController]
 [Route("[controller]")]

@@ -1,14 +1,25 @@
 INSERT INTO Provenience
 (ProvenienceId, ProjectNumber, SiteNumber, AccessionNumber, FieldSerialNumber, UnitNumber, Depth, ExcavationDate)
-SELECT 1, '2023-10', '3PU0001', '2023-142', 1, 1, '0-10', '2023-04-13'
+SELECT 1, '2023-10', '3PU0001', '2023-142', 1, 1, '0-10', '2023-04-22 10:34:23.55'
 UNION ALL
-SELECT 2, '2023-74', '3WA0142', '2023-157', 4, 2, '50-60', '2023-09-25'
+SELECT 2, '2023-74', '3WA0142', '2023-157', 4, 2, '50-60', '2023-04-22 10:34:23.55'
 UNION ALL
-SELECT 3, '2023-65', '3BE0687', '2023-187', 15, 4, '110-120', '2023-05-02'
+SELECT 3, '2023-65', '3BE0687', '2023-187', 15, 4, '110-120', '2023-04-22 10:34:23.55'
 UNION ALL
-SELECT 4, '2023-65', '3BE0687', '2023-187', 16, 4, '120-130', '2023-05-03'
+SELECT 4, '2023-65', '3BE0687', '2023-187', 16, 4, '120-130', '2023-04-22 10:34:23.55'
 UNION ALL
-SELECT 5, '2023-155', '3SA0007', '2023-117', 4, 2, '50-60', '2023-05-13'
+SELECT 5, '2023-155', '3SA0007', '2023-117', 4, 2, '50-60', '2023-04-22 10:34:23.55'
+
+INSERT INTO ArtifactData
+(ArtifactId, PeriodName, Level1Id, Level2Id, Level3Id, Level4Id, AdditionalDescription, ArtifactCount, ArtifactWeight, LabTechInitials, DateAnalyzed, ProvenienceId)
+SELECT 1, 'Pre-Contact', 4, 70, 90, 10, 'This is a very good pot', 2, 23.567, 'DMS', '2023-04-22 10:34:23.55', 1
+UNION ALL
+SELECT 2, 'Post-Contact', 7, 107, 131, 48, 'A set of very large, long, rusty nails', 17, 9.123, 'DMS', '2023-04-22 10:34:23.55', 3
+
+INSERT INTO ArtifactData
+(ArtifactId, PeriodName, Level1Id, Level2Id, Level3Id, AdditionalDescription, ArtifactCount, ArtifactWeight, LabTechInitials, DateAnalyzed, ProvenienceId)
+SELECT 3, 'Pre-Contact', 2, 6, 28, 'Gary Point Type', 1, 2.57, 'DMS', '2023-04-22 10:34:23.55', 5
+
 
 INSERT INTO Level1
 (Level1Id, Level1Name)
