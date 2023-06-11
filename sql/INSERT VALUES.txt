@@ -1,0 +1,669 @@
+INSERT INTO Provenience
+(ProvenienceId, ProjectNumber, SiteNumber, AccessionNumber, FieldSerialNumber, UnitNumber, Depth, ExcavationDate)
+SELECT 1, '2023-10', '3PU0001', '2023-142', 1, 1, '0-10', '2023-04-13'
+UNION ALL
+SELECT 2, '2023-74', '3WA0142', '2023-157', 4, 2, '50-60', '2023-09-25'
+UNION ALL
+SELECT 3, '2023-65', '3BE0687', '2023-187', 15, 4, '110-120', '2023-05-02'
+UNION ALL
+SELECT 4, '2023-65', '3BE0687', '2023-187', 16, 4, '120-130', '2023-05-03'
+UNION ALL
+SELECT 5, '2023-155', '3SA0007', '2023-117', 4, 2, '50-60', '2023-05-13'
+
+INSERT INTO Level1
+(Level1Id, Level1Name)
+SELECT 1, 'Unmodified Raw Material'
+UNION ALL
+SELECT 2, 'Stone'
+UNION ALL
+SELECT 3, 'Flora & Fauna'
+UNION ALL
+SELECT 4, 'Pottery'
+UNION ALL
+SELECT 5, 'Ceramic'
+UNION ALL
+SELECT 6, 'Glass'
+UNION ALL
+SELECT 7, 'Metal'
+UNION ALL
+SELECT 8, 'Other & Unknown'
+
+
+INSERT INTO Level2
+SELECT 1, 'Argillite'
+UNION ALL
+SELECT 2, 'Atoka Argillite'
+UNION ALL
+SELECT 3, 'Atoka Chert'
+UNION ALL
+SELECT 4, 'Bayou Manard Chert'
+UNION ALL
+SELECT 5, 'Big Fork Chert'
+UNION ALL
+SELECT 6, 'Burlington Chert'
+UNION ALL
+SELECT 7, 'Cotter Dolomite'
+UNION ALL
+SELECT 8, 'Chert'
+UNION ALL
+SELECT 9, 'Chouteau Chert'
+UNION ALL
+SELECT 10, 'Crowley''s Ridge Chert'
+UNION ALL
+SELECT 11, 'Dolomite-Other'
+UNION ALL
+SELECT 12, 'Elsey Chert'
+UNION ALL
+SELECT 13, 'Everton Chert'
+UNION ALL
+SELECT 14, 'Fayetteville Ironstone'
+UNION ALL
+SELECT 15, 'Flint'
+UNION ALL
+SELECT 16, 'Florence Chert'
+UNION ALL
+SELECT 17, 'Fortune Chert'
+UNION ALL
+SELECT 18, 'Fossil'
+UNION ALL
+SELECT 19, 'Frisco Chert'
+UNION ALL
+SELECT 20, 'Granite'
+UNION ALL
+SELECT 21, 'Gravel/Chert Cobbles'
+UNION ALL
+SELECT 22, 'Hematite'
+UNION ALL
+SELECT 23, 'Hindsville Chert'
+UNION ALL
+SELECT 24, 'Jackfort Chert'
+UNION ALL
+SELECT 25, 'Jefferson City Chert'
+UNION ALL
+SELECT 26, 'Joechim Chert'
+UNION ALL
+SELECT 27, 'Keokuk Chert'
+UNION ALL
+SELECT 28, 'Kimmswick Chert'
+UNION ALL
+SELECT 29, 'Lafayette Chert'
+UNION ALL
+SELECT 30, 'Limestone'
+UNION ALL
+SELECT 31, 'Mill Creek Chert'
+UNION ALL
+SELECT 32, 'Mudstone'
+UNION ALL
+SELECT 33, 'Novaculite'
+UNION ALL
+SELECT 34, 'Obsidian'
+UNION ALL
+SELECT 35, 'Penters Chert'
+UNION ALL
+SELECT 36, 'Pierson Chert/St Joe''s'
+UNION ALL
+SELECT 37, 'Pikin Chert'
+UNION ALL
+SELECT 38, 'Plattin Chert'
+UNION ALL
+SELECT 39, 'Quartz'
+UNION ALL
+SELECT 40, 'Quartzite'
+UNION ALL
+SELECT 41, 'Reed Spring Chert'
+UNION ALL
+SELECT 42, 'Roubideaux Chert'
+UNION ALL
+SELECT 43, 'Sandstone'
+UNION ALL
+SELECT 44, 'Sedimentary Rock'
+UNION ALL
+SELECT 45, 'Shale'
+UNION ALL
+SELECT 46, 'Silicified Sandstone'
+UNION ALL
+SELECT 47, 'Siltstone'
+UNION ALL
+SELECT 48, 'Slate'
+UNION ALL
+SELECT 49, 'Undifferentiated Ordovician Chert'
+UNION ALL
+SELECT 50, 'Undifferentiated Osagean Chert'
+UNION ALL
+SELECT 51, 'Other Chert'
+UNION ALL
+SELECT 52, 'Unknown Chert'
+UNION ALL
+SELECT 53, 'Other Stone'
+UNION ALL
+SELECT 54, 'Unknown Stone'
+UNION ALL
+SELECT 55, 'Chipped Lithic'
+UNION ALL
+SELECT 56, 'Ground Lithic'
+UNION ALL
+SELECT 57, 'Wood'
+UNION ALL
+SELECT 58, 'Charcoal'
+UNION ALL
+SELECT 59, 'Fiber'
+UNION ALL
+SELECT 60, 'Shell'
+UNION ALL
+SELECT 61, 'Antler or Tusk'
+UNION ALL
+SELECT 62, 'Hide'
+UNION ALL
+SELECT 63, 'Hair'
+UNION ALL
+SELECT 64, 'Tooth'
+UNION ALL
+SELECT 65, 'Bone'
+UNION ALL
+SELECT 66, 'Plant'
+UNION ALL
+SELECT 67, 'Aquatic Specimen'
+UNION ALL
+SELECT 68, 'Terrestrial Specimen'
+UNION ALL
+SELECT 69, 'Unknown Remains'
+UNION ALL
+SELECT 70, 'Grog Tempered'
+UNION ALL
+SELECT 71, 'Sand Tempered'
+UNION ALL
+SELECT 72, 'Shell Tempered'
+UNION ALL
+SELECT 73, 'Bone Tempered'
+UNION ALL
+SELECT 74, 'Grit Tempered'
+UNION ALL
+SELECT 75, 'Combination Tempered'
+UNION ALL
+SELECT 76, 'Other Tempered'
+UNION ALL
+SELECT 77, 'Unknown Tempered'
+UNION ALL
+SELECT 78, 'Creamware'
+UNION ALL
+SELECT 79, 'Coarse Earthenware'
+UNION ALL
+SELECT 80, 'Earthenware Other'
+UNION ALL
+SELECT 81, 'Earthenware Unknown'
+UNION ALL
+SELECT 82, 'Ironstone'
+UNION ALL
+SELECT 83, 'Pearlware'
+UNION ALL
+SELECT 84, 'Porcelain'
+UNION ALL
+SELECT 85, 'Refined Earthenware or China'
+UNION ALL
+SELECT 86, 'Redware'
+UNION ALL
+SELECT 87, 'Stoneware'
+UNION ALL
+SELECT 88, 'Whiteware'
+UNION ALL
+SELECT 89, 'Amber'
+UNION ALL
+SELECT 90, 'Amethyst'
+UNION ALL
+SELECT 91, 'Aquamarine'
+UNION ALL
+SELECT 92, 'Blue'
+UNION ALL
+SELECT 93, 'Brown'
+UNION ALL
+SELECT 94, 'Colorless or Clear'
+UNION ALL
+SELECT 95, 'Green'
+UNION ALL
+SELECT 96, 'Jadeite'
+UNION ALL
+SELECT 97, 'Opaque White or Milk Glass'
+UNION ALL
+SELECT 98, 'Olive or Dark Olive/Black'
+UNION ALL
+SELECT 99, 'Other'
+UNION ALL
+SELECT 100, 'Purple'
+UNION ALL
+SELECT 101, 'Red'
+UNION ALL
+SELECT 102, 'Unknown'
+UNION ALL
+SELECT 103, 'Aluminum'
+UNION ALL
+SELECT 104, 'Brass'
+UNION ALL
+SELECT 105, 'Bronze'
+UNION ALL
+SELECT 106, 'Copper'
+UNION ALL
+SELECT 107, 'Iron'
+UNION ALL
+SELECT 108, 'Lead'
+UNION ALL
+SELECT 109, 'Nickle'
+UNION ALL
+SELECT 110, 'Pewter'
+UNION ALL
+SELECT 111, 'Other'
+UNION ALL
+SELECT 112, 'Steel'
+UNION ALL
+SELECT 113, 'Unidentified or Unknown'
+UNION ALL
+SELECT 114, 'Zinc'
+UNION ALL
+SELECT 115, 'Brick'
+UNION ALL
+SELECT 116, 'Composite Material'
+UNION ALL
+SELECT 117, 'Mortar'
+UNION ALL
+SELECT 118, 'Modified Daub'
+UNION ALL
+SELECT 119, 'Plastic'
+UNION ALL
+SELECT 120, 'Unknown Material'
+UNION ALL
+SELECT 121, 'Unmodified Daub'
+
+
+INSERT INTO Level3
+SELECT 1, 'Abrader'
+UNION ALL
+SELECT 2, 'Adze'
+UNION ALL
+SELECT 3, 'Axe'
+UNION ALL
+SELECT 4, 'Blank'
+UNION ALL
+SELECT 5, 'Burin/Graver'
+UNION ALL
+SELECT 6, 'Celt'
+UNION ALL
+SELECT 7, 'Chisel'
+UNION ALL
+SELECT 8, 'Chopper'
+UNION ALL
+SELECT 9, 'Core'
+UNION ALL
+SELECT 10, 'Decortication Flake'
+UNION ALL
+SELECT 11, 'Drill/Awl/Perforator'
+UNION ALL
+SELECT 12, 'End Scraper'
+UNION ALL
+SELECT 13, 'Side Scraper'
+UNION ALL
+SELECT 14, 'Hammerstone'
+UNION ALL
+SELECT 15, 'Hoe'
+UNION ALL
+SELECT 16, 'Interior Thinning Flake'
+UNION ALL
+SELECT 17, 'Knife'
+UNION ALL
+SELECT 18, 'Knife Fragment'
+UNION ALL
+SELECT 19, 'Knife Preform'
+UNION ALL
+SELECT 20, 'Mano'
+UNION ALL
+SELECT 21, 'Metate or Anvil'
+UNION ALL
+SELECT 22, 'Mortar'
+UNION ALL
+SELECT 23, 'Other Biface'
+UNION ALL
+SELECT 24, 'Other Lithic'
+UNION ALL
+SELECT 25, 'Pestle'
+UNION ALL
+SELECT 26, 'Pick'
+UNION ALL
+SELECT 27, 'Pitted or Nutting Stone'
+UNION ALL
+SELECT 28, 'Projectile Point'
+UNION ALL
+SELECT 29, 'Projectile Point Fragment'
+UNION ALL
+SELECT 30, 'Projectile Point Preform'
+UNION ALL
+SELECT 31, 'RUM Flake'
+UNION ALL
+SELECT 32, 'Shatter or Debitage'
+UNION ALL
+SELECT 33, 'Spokeshave'
+UNION ALL
+SELECT 34, 'Tertiary Flake'
+UNION ALL
+SELECT 35, 'Tested Pebble or Cobble'
+UNION ALL
+SELECT 36, 'Undifferentiated Flake Fragment'
+UNION ALL
+SELECT 37, 'Uniface'
+UNION ALL
+SELECT 38, 'Unknown'
+UNION ALL
+SELECT 39, 'Weight or Sinker'
+UNION ALL
+SELECT 40, 'Amphibian Bone'
+UNION ALL
+SELECT 41, 'Avian Bone'
+UNION ALL
+SELECT 42, 'Fish Bone'
+UNION ALL
+SELECT 43, 'Floral Modified'
+UNION ALL
+SELECT 44, 'Floral Other'
+UNION ALL
+SELECT 45, 'Food Remains'
+UNION ALL
+SELECT 46, 'Mammal Bone'
+UNION ALL
+SELECT 47, 'Nut or Hull'
+UNION ALL
+SELECT 48, 'Other Animal'
+UNION ALL
+SELECT 49, 'Other Plant Material'
+UNION ALL
+SELECT 50, 'Reptile Bone'
+UNION ALL
+SELECT 51, 'Seed'
+UNION ALL
+SELECT 52, 'Unidentified Bone'
+UNION ALL
+SELECT 53, 'Bottle Sherd'
+UNION ALL
+SELECT 54, 'Bottle Rim Sherd'
+UNION ALL
+SELECT 55, 'Bottle Rim and Body Sherd'
+UNION ALL
+SELECT 56, 'Bottle Sherd with Handle'
+UNION ALL
+SELECT 57, 'Bottle Base Sherd'
+UNION ALL
+SELECT 58, 'Bowl Sherd'
+UNION ALL
+SELECT 59, 'Bowl Rim Sherd'
+UNION ALL
+SELECT 60, 'Bowl Base Sherd'
+UNION ALL
+SELECT 61, 'Bracelet'
+UNION ALL
+SELECT 62, 'Container Lid Sherd'
+UNION ALL
+SELECT 63, 'Cup Sherd'
+UNION ALL
+SELECT 64, 'Cup Rim Sherd'
+UNION ALL
+SELECT 65, 'Cup Rim and Body Sherd'
+UNION ALL
+SELECT 66, 'Cup Handle Sherd'
+UNION ALL
+SELECT 67, 'Cup Body and Handle Sherd'
+UNION ALL
+SELECT 68, 'Cup Body and Base Sherd'
+UNION ALL
+SELECT 69, 'Cup Base Sherd'
+UNION ALL
+SELECT 70, 'Effigy'
+UNION ALL
+SELECT 71, 'Geometric Object'
+UNION ALL
+SELECT 72, 'Gorget'
+UNION ALL
+SELECT 73, 'Leg Sherd or Foot Sherd'
+UNION ALL
+SELECT 74, 'Other Non-Vessel or Non-ware'
+UNION ALL
+SELECT 75, 'Other Sherd'
+UNION ALL
+SELECT 76, 'Plate Sherd'
+UNION ALL
+SELECT 77, 'Plate Rim Sherd'
+UNION ALL
+SELECT 78, 'Plate Body and Rim Sherd'
+UNION ALL
+SELECT 79, 'Plate Body and Base Sherd'
+UNION ALL
+SELECT 80, 'Plate Base Sherd'
+UNION ALL
+SELECT 81, 'Unidentified Rim Sherd or Lip Sherd'
+UNION ALL
+SELECT 82, 'Generic Shoulder Sherd'
+UNION ALL
+SELECT 83, 'Spheroid'
+UNION ALL
+SELECT 84, 'Terracotta Pipe'
+UNION ALL
+SELECT 85, 'Unidentified Sherd'
+UNION ALL
+SELECT 86, 'Whole Bowl'
+UNION ALL
+SELECT 87, 'Whole Container/Bottle'
+UNION ALL
+SELECT 88, 'Whole Cup'
+UNION ALL
+SELECT 89, 'Whole Plate'
+UNION ALL
+SELECT 90, 'Whole Vessel'
+UNION ALL
+SELECT 91, 'Flat or Window Glass'
+UNION ALL
+SELECT 92, 'Light Bulb'
+UNION ALL
+SELECT 93, 'Canning Glass Lid'
+UNION ALL
+SELECT 94, 'Ammunition'
+UNION ALL
+SELECT 95, 'Barbed Wire'
+UNION ALL
+SELECT 96, 'Bolt'
+UNION ALL
+SELECT 97, 'Bottle Cap'
+UNION ALL
+SELECT 98, 'Clothing Fastener'
+UNION ALL
+SELECT 99, 'Cut Clinch Nail'
+UNION ALL
+SELECT 100, 'Cut Floor Nail'
+UNION ALL
+SELECT 101, 'Cut Nail'
+UNION ALL
+SELECT 102, 'Decorative or Ornamental'
+UNION ALL
+SELECT 103, 'Farming Tool'
+UNION ALL
+SELECT 104, 'Fence Brads'
+UNION ALL
+SELECT 105, 'Firearm or part'
+UNION ALL
+SELECT 106, 'Horseshoe'
+UNION ALL
+SELECT 107, 'Hunting or Trapping'
+UNION ALL
+SELECT 108, 'Mechanical Part'
+UNION ALL
+SELECT 109, 'Metal Appliance or Part'
+UNION ALL
+SELECT 110, 'Metal Canning Lid'
+UNION ALL
+SELECT 111, 'Metal Jar Lid'
+UNION ALL
+SELECT 112, 'Musical Instrument'
+UNION ALL
+SELECT 113, 'Other Architectural Metal'
+UNION ALL
+SELECT 114, 'Other Arms'
+UNION ALL
+SELECT 115, 'Other Personal Use'
+UNION ALL
+SELECT 116, 'Personal Hygiene'
+UNION ALL
+SELECT 117, 'Personal Memento'
+UNION ALL
+SELECT 118, 'Roofing Shingle'
+UNION ALL
+SELECT 119, 'Recreation of Toy'
+UNION ALL
+SELECT 120, 'Screw'
+UNION ALL
+SELECT 121, 'Sheet Metal'
+UNION ALL
+SELECT 122, 'Tab (Beer or Other)'
+UNION ALL
+SELECT 123, 'Thimble'
+UNION ALL
+SELECT 124, 'Tin Container or Can'
+UNION ALL
+SELECT 125, 'Tool'
+UNION ALL
+SELECT 126, 'Unidentified Hardware'
+UNION ALL
+SELECT 127, 'Unidentified Metal Artifact'
+UNION ALL
+SELECT 128, 'Unidentified Nail or Bolt'
+UNION ALL
+SELECT 129, 'Washer'
+UNION ALL
+SELECT 130, 'Wire'
+UNION ALL
+SELECT 131, 'Wire Nail'
+UNION ALL
+SELECT 132, 'Wire Roofing Nail'
+UNION ALL
+SELECT 133, 'Wrought Nail'
+
+
+INSERT INTO Level4
+SELECT 1, 'Applique'
+UNION ALL
+SELECT 2, 'Black'
+UNION ALL
+SELECT 3, 'Albany Glaze'
+UNION ALL
+SELECT 4, 'Brushed or Combed'
+UNION ALL
+SELECT 5, 'Buffed'
+UNION ALL
+SELECT 6, 'Burnished'
+UNION ALL
+SELECT 7, 'Composite or Combination'
+UNION ALL
+SELECT 8, 'Dipped'
+UNION ALL
+SELECT 9, 'Glazed'
+UNION ALL
+SELECT 10, 'Hand Painted'
+UNION ALL
+SELECT 11, 'Heat Modified'
+UNION ALL
+SELECT 12, 'Impressed'
+UNION ALL
+SELECT 13, 'Incised or Engraved'
+UNION ALL
+SELECT 14, 'Lead Glaze'
+UNION ALL
+SELECT 15, 'Molded'
+UNION ALL
+SELECT 16, 'Other Decoration'
+UNION ALL
+SELECT 17, 'Oxidized'
+UNION ALL
+SELECT 18, 'Painted'
+UNION ALL
+SELECT 19, 'Polished or Burnished'
+UNION ALL
+SELECT 20, 'Punctuated'
+UNION ALL
+SELECT 21, 'Red'
+UNION ALL
+SELECT 22, 'Salt Glaze'
+UNION ALL
+SELECT 23, 'Scraped'
+UNION ALL
+SELECT 24, 'Slipped'
+UNION ALL
+SELECT 25, 'Smoothed'
+UNION ALL
+SELECT 26, 'Stamped'
+UNION ALL
+SELECT 27, 'Tin Enameled'
+UNION ALL
+SELECT 28, 'Transferware'
+UNION ALL
+SELECT 29, 'Unglazed'
+UNION ALL
+SELECT 30, 'Use Wear'
+UNION ALL
+SELECT 31, 'Unidentified Decoration Style'
+UNION ALL
+SELECT 32, 'White'
+UNION ALL
+SELECT 33, 'Machine Made'
+UNION ALL
+SELECT 34, 'Mouth Blown'
+UNION ALL
+SELECT 35, 'Embossed'
+UNION ALL
+SELECT 36, 'Flask'
+UNION ALL
+SELECT 37, 'Cylinder style liquor or spirit'
+UNION ALL
+SELECT 38, 'Square or Rectangular liquor or spirit'
+UNION ALL
+SELECT 39, 'Other liquor or spirit flask'
+UNION ALL
+SELECT 40, 'Beer'
+UNION ALL
+SELECT 41, 'Picnic or Jo Jo Flask liquor or spirit'
+UNION ALL
+SELECT 42, 'Dandy liquor or spirit flask'
+UNION ALL
+SELECT 43, 'Handled liquor or spirit'
+UNION ALL
+SELECT 44, 'Soda or Mineral Water'
+UNION ALL
+SELECT 45, 'Medicinal, ''chemical, ''or drug'
+UNION ALL
+SELECT 46, 'Food or Canning'
+UNION ALL
+SELECT 47, 'Household non-food related'
+UNION ALL
+SELECT 48, '60 D'
+UNION ALL
+SELECT 49, '50 D'
+UNION ALL
+SELECT 50, '40 D'
+UNION ALL
+SELECT 51, '30 D'
+UNION ALL
+SELECT 52, '20 D'
+UNION ALL
+SELECT 53, '16 D'
+UNION ALL
+SELECT 54, '12 D'
+UNION ALL
+SELECT 55, '10 D'
+UNION ALL
+SELECT 56, '9 D'
+UNION ALL
+SELECT 57, '8 D'
+UNION ALL
+SELECT 58, '7 D'
+UNION ALL
+SELECT 59, '6 D'
+UNION ALL
+SELECT 60, '5 D'
+UNION ALL
+SELECT 61, '4 D'
+UNION ALL
+SELECT 62, '3 D'
+UNION ALL
+SELECT 63, '2 D'
