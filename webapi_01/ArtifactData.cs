@@ -83,11 +83,12 @@ namespace webapi_01
             return artifacts;
         }
 
+
         public static List<ArtifactData> SearchEmployees(SqlConnection sqlConnection, string search = "", int pageSize = 10, int pageNumber = 1)
         {
             List<ArtifactData> artifacts = new List<ArtifactData>();
 
-            string sql = "select p.EmployeeID, e.FirstName, e.LastName, e.Salary, p.[Count] from (select EmployeeID, count(*) over () AS [Count] from Employee where LastName like '%' + @Search + '%' or FirstName like '%' + @Search + '%' order by EmployeeId offset @PageSize * (@PageNumber - 1) rows fetch next @PageSize rows only) p join Employee e on p.EmployeeId = e.EmployeeId order by 1;";
+            string sql = "select p.ArtifactId, a.PeriodName, a.Level1Id, a.Level2Id, a.Level3Id, a.Level4Id, a.AdditionalDescription, a.ArtifactCount, a.ArtifactWeight, a.LabTechInitials, a.DateAnalyzed, a.ProvenienceId, p.[Count] from (select ArtifactId, count(*) over () AS [Count] from ArtifactData where PeriodName like '%' + @Search + '%' or AdditionalDescription like '%' + @Search + '%' order by ArtifactId offset @PageSize * (@PageNumber - 1) rows fetch next @PageSize rows only) p join ArtifactData a on p.ArtifactId = a.ArtifactId order by 1;";
 
             SqlCommand sqlCommand = new SqlCommand(sql, sqlConnection);
             sqlCommand.CommandType = System.Data.CommandType.Text;
@@ -105,6 +106,7 @@ namespace webapi_01
             sqlCommand.Parameters.Add(paramPageNumber);
 
             SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+            
             while (sqlDataReader.Read())
             {
                 ArtifactData artifact = new ArtifactData();

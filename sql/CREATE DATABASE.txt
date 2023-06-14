@@ -1,4 +1,4 @@
-use db2023_01
+use artifacts_db
 Go
 
 CREATE TABLE Provenience (
