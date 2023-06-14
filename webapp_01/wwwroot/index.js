@@ -36,7 +36,7 @@ function webapp_02() {
 
     function searchEmployees() {
 
-        var url = 'http://localhost:5120/SearchEmployees?search=' + textSearch.value;
+        var url = 'http://localhost:5008/SearchEmployees?search=' + textSearch.value;
 
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = doAfterSearchEmployees;

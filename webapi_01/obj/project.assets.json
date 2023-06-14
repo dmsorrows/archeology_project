@@ -924,11 +924,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\dmsor\\Documents\\code\\demo-day\\webapi\\webapi.csproj",
+      "projectUniqueName": "C:\\Users\\dmsor\\Documents\\code\\project_01\\webapi_01\\webapi.csproj",
       "projectName": "webapi",
-      "projectPath": "c:\\Users\\dmsor\\Documents\\code\\demo-day\\webapi\\webapi.csproj",
+      "projectPath": "C:\\Users\\dmsor\\Documents\\code\\project_01\\webapi_01\\webapi.csproj",
       "packagesPath": "C:\\Users\\dmsor\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\dmsor\\Documents\\code\\demo-day\\webapi\\obj\\",
+      "outputPath": "C:\\Users\\dmsor\\Documents\\code\\project_01\\webapi_01\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\dmsor\\AppData\\Roaming\\NuGet\\NuGet.Config",

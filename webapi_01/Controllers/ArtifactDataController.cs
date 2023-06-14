@@ -5,18 +5,18 @@ namespace webapi_01.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class EmployeeController : ControllerBase
+public class ArtifactDataController : ControllerBase
 {
-    private readonly ILogger<WeatherForecastController> _logger;
+    // private readonly ILogger<WeatherForecastController> _logger;
 
-    public EmployeeController(ILogger<WeatherForecastController> logger)
-    {
-        _logger = logger;
-    }
+    // public ArtifactDataController(ILogger<WeatherForecastController> logger)
+    // {
+    //     _logger = logger;
+    // }
 
     [HttpGet]
     [Route("/SearchEmployees")]
-    public Response SearchEmployees(string pageSize = "10", string pageNumber = "1", string search = "")
+    public Response SearchArtifacts(string pageSize = "10", string pageNumber = "1", string search = "")
     {
         Response response = new Response();
         try
@@ -44,7 +44,7 @@ public class EmployeeController : ControllerBase
 
             response.Result = "success";
             response.Message = message;
-            response.Employees = artifacts;
+            response.Artifacts = artifacts;
         }
         catch (Exception e)
         {
@@ -157,7 +157,7 @@ public class EmployeeController : ControllerBase
     static string GetConnectionString()
     {
         string serverName = @"PALEO\SQLEXPRESS"; //Change to the "Server Name" you see when you launch SQL Server Management Studio.
-        string databaseName = "XXXXXXXX"; //Change to the database where you created your Employee table.
+        string databaseName = "artifacts_db"; //Change to the database where you created your Employee table.
         string connectionString = $"data source={serverName}; database={databaseName}; Integrated Security=true;";
         return connectionString;
     }
