@@ -9,6 +9,6 @@ namespace webapi_01
     {
         public string? Result { get; set; }
         public string? Message { get; set; }
-        public List<ArtifactData>? Employees { get; set; }
+        public List<ArtifactData>? Artifacts { get; set; }
     }
 }
