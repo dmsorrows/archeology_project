@@ -74,6 +74,7 @@ namespace webapi_01
                 artifact.AdditionalDescription = sqlDataReader["AdditionalDescription"].ToString();
                 artifact.ArtifactCount = Convert.ToInt32(sqlDataReader["ArtifactCount"].ToString());
                 artifact.ArtifactWeight = Convert.ToDecimal(sqlDataReader["ArtifactWeight"].ToString());
+                artifact.LabTechInitials = sqlDataReader["LabTechInitials"].ToString();
                 artifact.DateAnalyzed = Convert.ToDateTime(sqlDataReader["DateAnalyzed"].ToString()); 
                 artifact.ProvenienceId = Convert.ToInt32(sqlDataReader["ProvenienceId"].ToString());
 
@@ -84,12 +85,12 @@ namespace webapi_01
         }
 
 
-        public static List<ArtifactData> SearchEmployees(SqlConnection sqlConnection, string search = "", int pageSize = 10, int pageNumber = 1)
+        public static List<ArtifactData> SearchArtifacts(SqlConnection sqlConnection, string search = "", int pageSize = 10, int pageNumber = 1)
         {
             List<ArtifactData> artifacts = new List<ArtifactData>();
 
-            // string sql = "select p.ArtifactId, a.PeriodName, a.Level1Id, a.Level2Id, a.Level3Id, a.Level4Id, a.AdditionalDescription, a.ArtifactCount, a.ArtifactWeight, a.LabTechInitials, a.DateAnalyzed, a.ProvenienceId, p.[Count] from (select ArtifactId, count(*) over () AS [Count] from ArtifactData where PeriodName like '%' + @Search + '%' or AdditionalDescription like '%' + @Search + '%' order by ArtifactId offset @PageSize * (@PageNumber - 1) rows fetch next @PageSize rows only) p join ArtifactData a on p.ArtifactId = a.ArtifactId order by 1;";
-            string sql = "select * from ArtifactData;";
+            string sql = "select p.ArtifactId, a.PeriodName, a.Level1Id, a.Level2Id, a.Level3Id, a.Level4Id, a.AdditionalDescription, a.ArtifactCount, a.ArtifactWeight, a.LabTechInitials, a.DateAnalyzed, a.ProvenienceId, p.[Count] from (select ArtifactId, count(*) over () AS [Count] from ArtifactData where PeriodName like '%' + @Search + '%' or AdditionalDescription like '%' + @Search + '%' order by ArtifactId offset @PageSize * (@PageNumber - 1) rows fetch next @PageSize rows only) p join ArtifactData a on p.ArtifactId = a.ArtifactId order by 1;";
+            // string sql = "select * from ArtifactData;";
 
             SqlCommand sqlCommand = new SqlCommand(sql, sqlConnection);
             sqlCommand.CommandType = System.Data.CommandType.Text;
@@ -117,10 +118,11 @@ namespace webapi_01
                 artifact.Level1Id = Convert.ToInt32(sqlDataReader["Level1Id"].ToString());
                 artifact.Level2Id = Convert.ToInt32(sqlDataReader["Level2Id"].ToString());
                 artifact.Level3Id = Convert.ToInt32(sqlDataReader["Level3Id"].ToString());
-                artifact.Level4Id = Convert.ToInt32(sqlDataReader["Level4Id"].ToString());
+                artifact.Level4Id = Convert.ToInt32(sqlDataReader["Level4Id"].ToString() == "" ? "1" : sqlDataReader["Level4Id"].ToString()); //conditional operator
                 artifact.AdditionalDescription = sqlDataReader["AdditionalDescription"].ToString();
                 artifact.ArtifactCount = Convert.ToInt32(sqlDataReader["ArtifactCount"].ToString());
                 artifact.ArtifactWeight = Convert.ToDecimal(sqlDataReader["ArtifactWeight"].ToString());
+                artifact.LabTechInitials = sqlDataReader["LabTechInitials"].ToString();
                 artifact.DateAnalyzed = Convert.ToDateTime(sqlDataReader["DateAnalyzed"].ToString()); 
                 artifact.ProvenienceId = Convert.ToInt32(sqlDataReader["ProvenienceId"].ToString());
 

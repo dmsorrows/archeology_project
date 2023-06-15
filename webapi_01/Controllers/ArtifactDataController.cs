@@ -7,15 +7,15 @@ namespace webapi_01.Controllers;
 [Route("[controller]")]
 public class ArtifactDataController : ControllerBase
 {
-    // private readonly ILogger<WeatherForecastController> _logger;
+    private readonly ILogger<WeatherForecastController> _logger;
 
-    // public ArtifactDataController(ILogger<WeatherForecastController> logger)
-    // {
-    //     _logger = logger;
-    // }
+    public ArtifactDataController(ILogger<WeatherForecastController> logger)
+    {
+        _logger = logger;
+    }
 
     [HttpGet]
-    [Route("/SearchEmployees")]
+    [Route("/SearchArtifacts")]
     public Response SearchArtifacts(string pageSize = "10", string pageNumber = "1", string search = "")
     {
         Response response = new Response();
@@ -27,7 +27,7 @@ public class ArtifactDataController : ControllerBase
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {
                 sqlConnection.Open();
-                artifacts = ArtifactData.SearchEmployees(sqlConnection, search, Convert.ToInt32(pageSize), Convert.ToInt32(pageNumber));
+                artifacts = ArtifactData.SearchArtifacts(sqlConnection, search, Convert.ToInt32(pageSize), Convert.ToInt32(pageNumber));
             }
 
             string message = "";
@@ -35,11 +35,11 @@ public class ArtifactDataController : ControllerBase
             if (artifacts.Count() > 0)
             {
                 int artifactCount = artifacts[0].ArtifactCount;
-                message = $"Found {artifactCount} employees!";
+                message = $"Found {artifactCount} artifacts!";
             }
             else
             {
-                message = "No employees met your search criteria.";
+                message = "No artifacts met your search criteria.";
             }
 
             response.Result = "success";

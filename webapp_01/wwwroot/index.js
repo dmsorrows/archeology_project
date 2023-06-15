@@ -7,43 +7,43 @@ function webapp_02() {
     var buttonSearch = document.getElementById("button-search");
     var buttonSearchClear = document.getElementById("button-search-clear");
 
-    var employeeTable = document.getElementById("employee-table");
+    var artifactTable = document.getElementById("artifact-table");
 
-    var buttonUpdate = document.getElementById("button-update");
-    var buttonUpdateCancel = document.getElementById("button-update-cancel");
+    // var buttonUpdate = document.getElementById("button-update");
+    // var buttonUpdateCancel = document.getElementById("button-update-cancel");
 
-    var buttonDelete = document.getElementById("button-delete");
-    var buttonDeleteCancel = document.getElementById("button-delete-cancel");
+    // var buttonDelete = document.getElementById("button-delete");
+    // var buttonDeleteCancel = document.getElementById("button-delete-cancel");
 
-    var buttonInsert = document.getElementById("button-insert");
-    var buttonInsertCancel = document.getElementById("button-insert-cancel");
+    // var buttonInsert = document.getElementById("button-insert");
+    // var buttonInsertCancel = document.getElementById("button-insert-cancel");
 
     //Add event listeners
 
-    buttonSearch.addEventListener("click", searchEmployees);
+    buttonSearch.addEventListener("click", searchArtifacts);
     buttonSearchClear.addEventListener("click", searchClear);
 
-    buttonUpdate.addEventListener("click", updateEmployee);
-    buttonUpdateCancel.addEventListener("click", updateEmployeeCancel);
+    // buttonUpdate.addEventListener("click", updateEmployee);
+    // buttonUpdateCancel.addEventListener("click", updateEmployeeCancel);
 
-    buttonDelete.addEventListener("click", deleteEmployee);
-    buttonDeleteCancel.addEventListener("click", deleteEmployeeCancel);
+    // buttonDelete.addEventListener("click", deleteEmployee);
+    // buttonDeleteCancel.addEventListener("click", deleteEmployeeCancel);
 
-    buttonInsert.addEventListener("click", insertEmployee);
-    buttonInsertCancel.addEventListener("click", insertEmployeeCancel);
+    // buttonInsert.addEventListener("click", insertEmployee);
+    // buttonInsertCancel.addEventListener("click", insertEmployeeCancel);
 
     //Functions
 
-    function searchEmployees() {
+    function searchArtifacts() {
 
-        var url = 'http://localhost:5008/SearchEmployees?search=' + textSearch.value;
+        var url = 'http://localhost:5008/SearchArtifacts?search=' + textSearch.value;
 
         var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = doAfterSearchEmployees;
+        xhr.onreadystatechange = doAfterSearchArtifacts;
         xhr.open('GET', url);
         xhr.send(null);
 
-        function doAfterSearchEmployees() {
+        function doAfterSearchArtifacts() {
             var DONE = 4; // readyState 4 means the request is done.
             var OK = 200; // status 200 is a successful return.
             if (xhr.readyState === DONE) {
@@ -52,7 +52,7 @@ function webapp_02() {
                     var response = JSON.parse(xhr.responseText);
 
                     if (response.result === "success") {
-                        showEmployees(response.employees);
+                        showArtifacts(response.artifacts);
                     } else {
                         alert("API Error: " + response.message);
                     }
@@ -61,175 +61,174 @@ function webapp_02() {
                 }
             }
         };
-
     };
 
-    function showEmployees(employees) {
-        var employeeTableText = '<table class="table table-striped table-sm"><thead><tr><th scope="col">Employee ID</th><th scope="col">First Name</th><th scope="col">Last Name</th><th scope="col">Salary</th></tr></thead><tbody>';
+    function showArtifacts(artifacts) {
+        var artifactTableText = '<table class="table table-striped table-sm"><thead><tr><th scope="col">Artifact Id</th><th scope="col">Period Name</th><th scope="col">Level 1 Id</th><th scope="col">Level 2 Id</th><th scope="col">Level 3 Id</th><th scope="col">Level 4 Id</th><th scope="col">Additional Description</th><th scope="col">Artifact Count</th><th scope="col">Artifact Weight</th><th scope="col">Lab Tech Initials</th><th scope="col">Date Analyzed</th><th scope="col">Provenience Id</th></tr></thead><tbody>';
 
-        for (var i = 0; i < employees.length; i++) {
-            var employee = employees[i];
+        for (var i = 0; i < artifacts.length; i++) {
+            var artifact = artifacts[i];
 
-            employeeTableText = employeeTableText + '<tr><th scope="row">' + employee.employeeId + '</th><td>' + employee.firstName + '</td><td>' + employee.lastName + '</td><td>' + employee.salary + '</td></tr>';
+            artifactTableText = artifactTableText + '<tr><th scope="row">' + artifact.artifactId + '</th><td>' + artifact.periodName + '</td><td>' + artifact.level1Id + '</td><td>' + artifact.level2Id + '</td><td>' + artifact.level3Id + '</td><td>' + artifact.level4Id + '</td><td>' + artifact.additionalDescription + '</td><td>' + artifact.artifactCount + '</td><td>' + artifact.artifactWeight + '</td><td>' + artifact.labTechInitials + '</td><td>' + artifact.dateAnalyzed + '</td><td>' + artifact.provenienceId + '</td></tr>';
         }
 
-        employeeTableText = employeeTableText + '</tbody></table>';
+        artifactTableText = artifactTableText + '</tbody></table>';
 
-        employeeTable.innerHTML = employeeTableText;
+        artifactTable.innerHTML = artifactTableText;
     }
 
     function searchClear() {
         textSearch.value = "";
-        searchEmployees();
+        searchArtifacts();
     }
 
-    function insertEmployee() {
+    // function insertEmployee() {
 
-        var textFirstName = document.getElementById("text-insert-first-name");
-        var textLastName = document.getElementById("text-insert-last-name");
-        var textSalary = document.getElementById("text-insert-salary");
+    //     var textFirstName = document.getElementById("text-insert-first-name");
+    //     var textLastName = document.getElementById("text-insert-last-name");
+    //     var textSalary = document.getElementById("text-insert-salary");
 
-        var url = 'http://localhost:5120/InsertEmployee?lastName=' + textLastName.value + '&firstName=' + textFirstName.value + '&salary=' + textSalary.value;
+    //     var url = 'http://localhost:5120/InsertEmployee?lastName=' + textLastName.value + '&firstName=' + textFirstName.value + '&salary=' + textSalary.value;
 
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = doAfterInsertEmployee;
-        xhr.open('GET', url);
-        xhr.send(null);
+    //     var xhr = new XMLHttpRequest();
+    //     xhr.onreadystatechange = doAfterInsertEmployee;
+    //     xhr.open('GET', url);
+    //     xhr.send(null);
 
-        function doAfterInsertEmployee() {
-            var DONE = 4; // readyState 4 means the request is done.
-            var OK = 200; // status 200 is a successful return.
-            if (xhr.readyState === DONE) {
-                if (xhr.status === OK) {
+    //     function doAfterInsertEmployee() {
+    //         var DONE = 4; // readyState 4 means the request is done.
+    //         var OK = 200; // status 200 is a successful return.
+    //         if (xhr.readyState === DONE) {
+    //             if (xhr.status === OK) {
 
-                    var response = JSON.parse(xhr.responseText);
+    //                 var response = JSON.parse(xhr.responseText);
 
-                    if (response.result === "success") {
-                        showEmployees(response.employees);
-                    } else {
-                        alert("API Error: " + response.message);
-                    }
-                } else {
-                    alert("Server Error: " + xhr.status + " " + xhr.statusText);
-                }
-            }
-        };
+    //                 if (response.result === "success") {
+    //                     showEmployees(response.employees);
+    //                 } else {
+    //                     alert("API Error: " + response.message);
+    //                 }
+    //             } else {
+    //                 alert("Server Error: " + xhr.status + " " + xhr.statusText);
+    //             }
+    //         }
+    //     };
 
-        textFirstName.value = "";
-        textLastName.value = "";
-        textSalary.value = "";
+    //     textFirstName.value = "";
+    //     textLastName.value = "";
+    //     textSalary.value = "";
 
-    };
+    // };
 
-    function insertEmployeeCancel() {
+    // function insertEmployeeCancel() {
 
-        var textFirstName = document.getElementById("text-insert-first-name");
-        var textLastName = document.getElementById("text-insert-last-name");
-        var textSalary = document.getElementById("text-insert-salary");
+    //     var textFirstName = document.getElementById("text-insert-first-name");
+    //     var textLastName = document.getElementById("text-insert-last-name");
+    //     var textSalary = document.getElementById("text-insert-salary");
 
-        textFirstName.value = "";
-        textLastName.value = "";
-        textSalary.value = "";
+    //     textFirstName.value = "";
+    //     textLastName.value = "";
+    //     textSalary.value = "";
 
-    }
+    // }
 
-    //Update functions go here.
-    function updateEmployee() {
+    // //Update functions go here.
+    // function updateEmployee() {
 
-        var textEmployeeId = document.getElementById("text-update-employee-id");
-        var textFirstName = document.getElementById("text-update-first-name");
-        var textLastName = document.getElementById("text-update-last-name");
-        var textSalary = document.getElementById("text-update-salary");
+    //     var textEmployeeId = document.getElementById("text-update-employee-id");
+    //     var textFirstName = document.getElementById("text-update-first-name");
+    //     var textLastName = document.getElementById("text-update-last-name");
+    //     var textSalary = document.getElementById("text-update-salary");
 
-        var url = 'http://localhost:5120/UpdateEmployee?employeeId=' + textEmployeeId.value + '&lastName=' + textLastName.value + '&firstName=' + textFirstName.value + '&salary=' + textSalary.value;   //An exercise for the reader...
+    //     var url = 'http://localhost:5120/UpdateEmployee?employeeId=' + textEmployeeId.value + '&lastName=' + textLastName.value + '&firstName=' + textFirstName.value + '&salary=' + textSalary.value;   //An exercise for the reader...
 
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = doAfterUpdateEmployee;
-        xhr.open('GET', url);
-        xhr.send(null);
+    //     var xhr = new XMLHttpRequest();
+    //     xhr.onreadystatechange = doAfterUpdateEmployee;
+    //     xhr.open('GET', url);
+    //     xhr.send(null);
 
-        function doAfterUpdateEmployee() {
-            var DONE = 4; // readyState 4 means the request is done.
-            var OK = 200; // status 200 is a successful return.
-            if (xhr.readyState === DONE) {
-                if (xhr.status === OK) {
+    //     function doAfterUpdateEmployee() {
+    //         var DONE = 4; // readyState 4 means the request is done.
+    //         var OK = 200; // status 200 is a successful return.
+    //         if (xhr.readyState === DONE) {
+    //             if (xhr.status === OK) {
 
-                    var response = JSON.parse(xhr.responseText);
+    //                 var response = JSON.parse(xhr.responseText);
 
-                    if (response.result === "success") {
-                        showEmployees(response.employees);
-                    } else {
-                        alert("API Error: " + response.message);
-                    }
-                } else {
-                    alert("Server Error: " + xhr.status + " " + xhr.statusText);
-                }
-            }
-        };
+    //                 if (response.result === "success") {
+    //                     showEmployees(response.employees);
+    //                 } else {
+    //                     alert("API Error: " + response.message);
+    //                 }
+    //             } else {
+    //                 alert("Server Error: " + xhr.status + " " + xhr.statusText);
+    //             }
+    //         }
+    //     };
 
-        textEmployeeId.value = "";
-        textFirstName.value = "";
-        textLastName.value = "";
-        textSalary.value = "";
+    //     textEmployeeId.value = "";
+    //     textFirstName.value = "";
+    //     textLastName.value = "";
+    //     textSalary.value = "";
 
-    };
+    // };
 
-    function updateEmployeeCancel() {
+    // function updateEmployeeCancel() {
 
-        var textEmployeeId = document.getElementById("text-update-employee-id");
-        var textFirstName = document.getElementById("text-update-first-name");
-        var textLastName = document.getElementById("text-update-last-name");
-        var textSalary = document.getElementById("text-update-salary");
+    //     var textEmployeeId = document.getElementById("text-update-employee-id");
+    //     var textFirstName = document.getElementById("text-update-first-name");
+    //     var textLastName = document.getElementById("text-update-last-name");
+    //     var textSalary = document.getElementById("text-update-salary");
 
-        textEmployeeId.value = "";
-        textFirstName.value = "";
-        textLastName.value = "";
-        textSalary.value = "";
+    //     textEmployeeId.value = "";
+    //     textFirstName.value = "";
+    //     textLastName.value = "";
+    //     textSalary.value = "";
 
-    }
+    // }
 
-    //Delete functions go here.
-    function deleteEmployee() {
+    // //Delete functions go here.
+    // function deleteEmployee() {
 
-        var textEmployeeId = document.getElementById("text-delete-employee-id");
+    //     var textEmployeeId = document.getElementById("text-delete-employee-id");
 
-        var url = 'http://localhost:5120/DeleteEmployee?employeeid=' + textEmployeeId.value;
+    //     var url = 'http://localhost:5120/DeleteEmployee?employeeid=' + textEmployeeId.value;
 
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = doAfterDeleteEmployee;
-        xhr.open('GET', url);
-        xhr.send(null);
+    //     var xhr = new XMLHttpRequest();
+    //     xhr.onreadystatechange = doAfterDeleteEmployee;
+    //     xhr.open('GET', url);
+    //     xhr.send(null);
 
-        function doAfterDeleteEmployee() {
-            var DONE = 4; // readyState 4 means the request is done.
-            var OK = 200; // status 200 is a successful return.
-            if (xhr.readyState === DONE) {
-                if (xhr.status === OK) {
+    //     function doAfterDeleteEmployee() {
+    //         var DONE = 4; // readyState 4 means the request is done.
+    //         var OK = 200; // status 200 is a successful return.
+    //         if (xhr.readyState === DONE) {
+    //             if (xhr.status === OK) {
 
-                    var response = JSON.parse(xhr.responseText);
+    //                 var response = JSON.parse(xhr.responseText);
 
-                    if (response.result === "success") {
-                        showEmployees(response.employees);
-                    } else {
-                        alert("API Error: " + response.message);
-                    }
-                } else {
-                    alert("Server Error: " + xhr.status + " " + xhr.statusText);
-                }
-            }
-        };
+    //                 if (response.result === "success") {
+    //                     showEmployees(response.employees);
+    //                 } else {
+    //                     alert("API Error: " + response.message);
+    //                 }
+    //             } else {
+    //                 alert("Server Error: " + xhr.status + " " + xhr.statusText);
+    //             }
+    //         }
+    //     };
 
-        textEmployeeId.value = "";
+    //     textEmployeeId.value = "";
 
-    };
+    // };
 
-    function deleteEmployeeCancel() {
-        var textEmployeeId = document.getElementById("text-delete-employee-id");
-        textEmployeeId.value = "";
-    }
+    // function deleteEmployeeCancel() {
+    //     var textEmployeeId = document.getElementById("text-delete-employee-id");
+    //     textEmployeeId.value = "";
+    // }
 
     //Invoke searchEmployees() on load
-    searchEmployees();
+    searchArtifacts();
 }
 
 webapp_02();
