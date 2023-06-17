@@ -64,12 +64,12 @@ function webapp_02() {
     };
 
     function showArtifacts(artifacts) {
-        var artifactTableText = '<table class="table table-striped table-sm"><thead><tr><th scope="col">Artifact Id</th><th scope="col">Period Name</th><th scope="col">Level 1 Id</th><th scope="col">Level 2 Id</th><th scope="col">Level 3 Id</th><th scope="col">Level 4 Id</th><th scope="col">Additional Description</th><th scope="col">Artifact Count</th><th scope="col">Artifact Weight</th><th scope="col">Lab Tech Initials</th><th scope="col">Date Analyzed</th><th scope="col">Provenience Id</th></tr></thead><tbody>';
+        var artifactTableText = '<table class="table table-striped table-sm"><thead><tr><th scope="col"Artifact Id</th><th scope="col"Project Number</th><th scope="col">Site Number</th><th scope="col">Accession Number</th><th scope="col">FSN</th><th scope="col">Unit</th><th scope="col">Depth (cmbd)</th><th scope="col">Excavation Date</th><th scope="col">Period</th><th scope="col">Level 1</th><th scope="col">Level 2</th><th scope="col">Level 3</th><th scope="col">Level 4</th><th scope="col">Additional Description</th><th scope="col">Artifact Count</th><th scope="col">Weight (g)</th><th scope="col">Analyzer</th><th scope="col">Date Analyzed</th></tr></thead><tbody>';
 
         for (var i = 0; i < artifacts.length; i++) {
             var artifact = artifacts[i];
 
-            artifactTableText = artifactTableText + '<tr><th scope="row">' + artifact.artifactId + '</th><td>' + artifact.periodName + '</td><td>' + artifact.level1Id + '</td><td>' + artifact.level2Id + '</td><td>' + artifact.level3Id + '</td><td>' + artifact.level4Id + '</td><td>' + artifact.additionalDescription + '</td><td>' + artifact.artifactCount + '</td><td>' + artifact.artifactWeight + '</td><td>' + artifact.labTechInitials + '</td><td>' + artifact.dateAnalyzed + '</td><td>' + artifact.provenienceId + '</td></tr>';
+            artifactTableText = artifactTableText + '<tr><th scope="row">' + artifact.artifactId + '</th><td>' + artifact.projectNumber + '</td><td>' + artifact.SiteNumber + '</td><td>' + artifact.AccessionNumber + '</td><td>' + artifact.FieldSerialNumber + '</td><td>' + artifact.UnitNumber + '</td><td>' + artifact.Depth + '</td><td>' + artifact.ExcavationDate + '</td><td>' + artifact.PeriodName + '</td><td>' + artifact.Level1Name + '</td><td>' + artifact.Level2Name + '</td><td>' + artifact.Level3Name + '</td><td>' + artifact.Level4Name + '</td><td>' + artifact.AdditionalDescription + '</td><td>' + artifact.ArtifactCount + '</td><td>' + artifact.ArtifactWeight + '</td><td>' + artifact.LabTechInitials + '</td><td>' + artifact.DateAnalyzed + '</td></tr>';
         }
 
         artifactTableText = artifactTableText + '</tbody></table>';

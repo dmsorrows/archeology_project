@@ -1,0 +1,105 @@
+SELECT p.ProjectNumber AS "Project Number", p.SiteNumber AS "Site Number", p.AccessionNumber AS "Accession Number", p.FieldSerialNumber AS "FSN", p.UnitNumber AS "Unit", p.Depth AS "Depth (cmbd)", 
+	p.ExcavationDate AS "Excavation Date", a.PeriodName AS "Period", l1.Level1Name AS "Level 1", l2.Level2Name AS "Level 2", l3.Level3Name AS "Level 3", l4.Level4Name AS "Level 4", 
+	a.AdditionalDescription AS "Additional Description", a.ArtifactCount AS "Artifact Count", a.ArtifactWeight AS "Weight (g)", a.LabTechInitials AS "Analyzer", a.DateAnalyzed AS "Date Analyzed"
+FROM ArtifactData AS a
+INNER JOIN Provenience AS p
+ON a.ProvenienceId = p.ProvenienceId
+INNER JOIN Level1 AS l1
+ON a.Level1Id = l1.Level1Id
+INNER JOIN Level2 AS l2
+ON a.Level2Id = l2.Level2Id
+INNER JOIN Level3 AS l3
+ON a.Level3Id = l3.Level3Id
+LEFT OUTER JOIN Level4 AS l4
+ON a.Level4Id = l4.Level4Id
+ORDER BY
+p.FieldSerialNumber, a.PeriodName, l1.Level1Name, l2.Level2Name, l3.Level3Name, l4.Level4Name
+;
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+SELECT a.ArtifactId, p.ProjectNumber AS "Project Number", p.SiteNumber AS "Site Number", p.AccessionNumber AS "Accession Number", p.FieldSerialNumber AS "FSN", p.UnitNumber AS "Unit", p.Depth AS "Depth (cmbd)", 
+	p.ExcavationDate AS "Excavation Date", aa.PeriodName AS "Period", l1.Level1Name AS "Level 1", l2.Level2Name AS "Level 2", l3.Level3Name AS "Level 3", l4.Level4Name AS "Level 4", 
+	aa.AdditionalDescription AS "Additional Description", aa.ArtifactCount AS "Artifact Count", aa.ArtifactWeight AS "Weight (g)", aa.LabTechInitials AS "Analyzer", aa.DateAnalyzed AS "Date Analyzed", a.[Count] 
+FROM (SELECT ArtifactId, count(*) over () AS [Count] FROM ArtifactData WHERE PeriodName LIKE '%' + @Search + '%' or AdditionalDescription LIKE '%' + @Search + '%' 
+	ORDER BY ArtifactId offset @PageSize * (@PageNumber - 1) rows fetch next @PageSize rows only) AS a 
+INNER JOIN ArtifactData AS aa 
+ON aa.ArtifactId = a.ArtifactId
+INNER JOIN Provenience AS p
+ON aa.ProvenienceId = p.ProvenienceId
+INNER JOIN Level1 AS l1
+ON aa.Level1Id = l1.Level1Id
+INNER JOIN Level2 AS l2
+ON aa.Level2Id = l2.Level2Id
+INNER JOIN Level3 AS l3
+ON aa.Level3Id = l3.Level3Id
+LEFT OUTER JOIN Level4 AS l4
+ON aa.Level4Id = l4.Level4Id
+ORDER BY
+p.FieldSerialNumber, aa.PeriodName, l1.Level1Name, l2.Level2Name, l3.Level3Name, l4.Level4Name
+;
+
+
+SELECT a.ArtifactId, p.ProjectNumber AS "Project Number", p.SiteNumber AS "Site Number", p.AccessionNumber AS "Accession Number", p.FieldSerialNumber AS "FSN", p.UnitNumber AS "Unit", p.Depth AS "Depth (cmbd)", p.ExcavationDate AS "Excavation Date", aa.PeriodName AS "Period", l1.Level1Name AS "Level 1", l2.Level2Name AS "Level 2", l3.Level3Name AS "Level 3", l4.Level4Name AS "Level 4", aa.AdditionalDescription AS "Additional Description", aa.ArtifactCount AS "Artifact Count", aa.ArtifactWeight AS "Weight (g)", aa.LabTechInitials AS "Analyzer", aa.DateAnalyzed AS "Date Analyzed", a.[Count] FROM (SELECT ArtifactId, count(*) over () AS [Count] FROM ArtifactData WHERE PeriodName LIKE '%' + @Search + '%' or AdditionalDescription LIKE '%' + @Search + '%' ORDER BY ArtifactId offset @PageSize * (@PageNumber - 1) rows fetch next @PageSize rows only) AS a INNER JOIN ArtifactData AS aa ON aa.ArtifactId = a.ArtifactId INNER JOIN Provenience AS p ON a.ProvenienceId = p.ProvenienceId INNER JOIN Level1 AS l1 ON a.Level1Id = l1.Level1Id INNER JOIN Level2 AS l2 ON a.Level2Id = l2.Level2Id INNER JOIN Level3 AS l3 ON a.Level3Id = l3.Level3Id LEFT OUTER JOIN Level4 AS l4 ON a.Level4Id = l4.Level4Id ORDER BY p.FieldSerialNumber, aa.PeriodName, l1.Level1Name, l2.Level2Name, l3.Level3Name, l4.Level4Name;
+
+
+
+<table class="table table-striped table-sm"><thead>
+<tr>
+<th scope="col"Artifact Id</th>
+<th scope="col"Project Number</th>
+<th scope="col">Site Number</th>
+<th scope="col">Accession Number</th>
+<th scope="col">FSN</th>
+<th scope="col">Unit</th>
+<th scope="col">Depth (cmbd)</th>
+<th scope="col">Excavation Date</th>
+<th scope="col">Period</th>
+<th scope="col">Level 1</th>
+<th scope="col">Level 2</th>
+<th scope="col">Level 3</th>
+<th scope="col">Level 4</th>
+<th scope="col">Additional Description</th>
+<th scope="col">Artifact Count</th>
+<th scope="col">Weight (g)</th>
+<th scope="col">Analyzer</th>
+<th scope="col">Date Analyzed</th>
+</tr>
+</thead>
+<tbody>
+
+artifactTableText = artifactTableText + '<tr>
+<th scope="row">' + artifact.artifactId + '</th>
+<td>' + artifact.projectNumber + '</td>
+<td>' + artifact.SiteNumber + '</td>
+<td>' + artifact.AccessionNumber + '</td>
+<td>' + artifact.FieldSerialNumber + '</td>
+<td>' + artifact.UnitNumber + '</td>
+<td>' + artifact.Depth + '</td>
+<td>' + artifact.ExcavationDate + '</td>
+<td>' + artifact.PeriodName + '</td>
+<td>' + artifact.Level1Name + '</td>
+<td>' + artifact.Level2Name + '</td>
+<td>' + artifact.Level3Name + '</td>
+<td>' + artifact.Level4Name + '</td>
+<td>' + artifact.AdditionalDescription + '</td>
+<td>' + artifact.ArtifactCount + '</td>
+<td>' + artifact.ArtifactWeight + '</td>
+<td>' + artifact.LabTechInitials + '</td>
+<td>' + artifact.DateAnalyzed + '</td>
+</tr>';
+
+
+
+<table class="table table-striped table-sm"><thead><tr><th scope="col"Artifact Id</th><th scope="col"Project Number</th><th scope="col">Site Number</th><th scope="col">Accession Number</th><th scope="col">FSN</th><th scope="col">Unit</th><th scope="col">Depth (cmbd)</th><th scope="col">Excavation Date</th><th scope="col">Period</th><th scope="col">Level 1</th><th scope="col">Level 2</th><th scope="col">Level 3</th><th scope="col">Level 4</th><th scope="col">Additional Description</th><th scope="col">Artifact Count</th><th scope="col">Weight (g)</th><th scope="col">Analyzer</th><th scope="col">Date Analyzed</th></tr></thead><tbody>
+
+artifactTableText = artifactTableText + '<tr><th scope="row">' + artifact.artifactId + '</th><td>' + artifact.projectNumber + '</td><td>' + artifact.SiteNumber + '</td><td>' + artifact.AccessionNumber + '</td><td>' + artifact.FieldSerialNumber + '</td><td>' + artifact.UnitNumber + '</td><td>' + artifact.Depth + '</td><td>' + artifact.ExcavationDate + '</td><td>' + artifact.PeriodName + '</td><td>' + artifact.Level1Name + '</td><td>' + artifact.Level2Name + '</td><td>' + artifact.Level3Name + '</td><td>' + artifact.Level4Name + '</td><td>' + artifact.AdditionalDescription + '</td><td>' + artifact.ArtifactCount + '</td><td>' + artifact.ArtifactWeight + '</td><td>' + artifact.LabTechInitials + '</td><td>' + artifact.DateAnalyzed + '</td></tr>';
+
+
+
+
+
+
+
