@@ -5,45 +5,45 @@ namespace webapi_01.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class Level1Controller : ControllerBase
+public class ProvenienceController : ControllerBase
 {
     private readonly ILogger<WeatherForecastController> _logger;
 
-    public Level1Controller(ILogger<WeatherForecastController> logger)
+    public ProvenienceController(ILogger<WeatherForecastController> logger)
     {
         _logger = logger;
     }
 
     [HttpGet]
-    [Route("/GetLevel1Names")]
-    public Response GetLevel1Names()
+    [Route("/GetProvenienceData")]
+    public Response GetProvenienceData()
     {
         Response response = new Response();
         try
         {
-            List<Level1> level1Names = new List<Level1>();
+            List<Provenience> provenienceData = new List<Provenience>();
 
             string connectionString = GetConnectionString();
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {
                 sqlConnection.Open();
-                level1Names = Level1.GetLevel1Names(sqlConnection);
+                provenienceData = Provenience.GetProvenienceData(sqlConnection);
             }
 
             string message = "";
 
-            if (level1Names.Count() > 0)
+            if (provenienceData.Count() > 0)
             {
-                message = $"Found Level 1 names!";
+                message = $"You found some provenience data!";
             }
             else
             {
-                message = "No Level 1 names met your search criteria.";
+                message = "No provenience data met your search criteria.";
             }
 
             response.Result = "success";
             response.Message = message;
-            response.Level1Names = level1Names;
+            response.ProvenienceData = provenienceData;
         }
         catch (Exception e)
         {

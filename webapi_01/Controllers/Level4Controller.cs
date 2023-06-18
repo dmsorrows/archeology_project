@@ -5,45 +5,45 @@ namespace webapi_01.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class Level1Controller : ControllerBase
+public class Level4Controller : ControllerBase
 {
     private readonly ILogger<WeatherForecastController> _logger;
 
-    public Level1Controller(ILogger<WeatherForecastController> logger)
+    public Level4Controller(ILogger<WeatherForecastController> logger)
     {
         _logger = logger;
     }
 
     [HttpGet]
-    [Route("/GetLevel1Names")]
-    public Response GetLevel1Names()
+    [Route("/GetLevel4Names")]
+    public Response GetLevel4Names()
     {
         Response response = new Response();
         try
         {
-            List<Level1> level1Names = new List<Level1>();
+            List<Level4> level4Names = new List<Level4>();
 
             string connectionString = GetConnectionString();
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {
                 sqlConnection.Open();
-                level1Names = Level1.GetLevel1Names(sqlConnection);
+                level4Names = Level4.GetLevel4Names(sqlConnection);
             }
 
             string message = "";
 
-            if (level1Names.Count() > 0)
+            if (level4Names.Count() > 0)
             {
-                message = $"Found Level 1 names!";
+                message = $"Found Level 4 names!";
             }
             else
             {
-                message = "No Level 1 names met your search criteria.";
+                message = "No Level 4 names met your search criteria.";
             }
 
             response.Result = "success";
             response.Message = message;
-            response.Level1Names = level1Names;
+            response.Level4Names = level4Names;
         }
         catch (Exception e)
         {

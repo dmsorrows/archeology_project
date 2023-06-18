@@ -54,6 +54,7 @@ public class ArtifactDataController : ControllerBase
         return response;
     }
 
+
     // [HttpGet]
     // [Route("/InsertEmployee")]
     // public Response InsertEmployee(string lastName, string firstName, string salary)

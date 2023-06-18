@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
 
 namespace webapi_01
 {
@@ -45,6 +46,34 @@ namespace webapi_01
             ExcavationDate = excavationDate;  
         }
 
-        
+        public static List<Provenience> GetProvenienceData(SqlConnection sqlConnection)
+        {
+            List<Provenience> provenienceData = new List<Provenience>();
+
+            string sql = "SELECT ProvenienceId, ProjectNumber, SiteNumber, AccessionNumber, FieldSerialNumber, UnitNumber, Depth, ExcavationDate FROM artifacts_db.dbo.Provenience;";
+
+            SqlCommand sqlCommand = new SqlCommand(sql, sqlConnection);
+            sqlCommand.CommandType = System.Data.CommandType.Text;
+
+            SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+            
+            while (sqlDataReader.Read())
+            {
+                Provenience provenienceDatum = new Provenience();
+
+                provenienceDatum.ProvenienceId = Convert.ToInt32(sqlDataReader["ProvenienceId"].ToString());
+                provenienceDatum.ProjectNumber = sqlDataReader["ProjectNumber"].ToString();
+                provenienceDatum.SiteNumber = sqlDataReader["SiteNumber"].ToString();
+                provenienceDatum.AccessionNumber = sqlDataReader["AccessionNumber"].ToString();
+                provenienceDatum.FieldSerialNumber = Convert.ToInt32(sqlDataReader["FieldSerialNumber"].ToString());
+                provenienceDatum.UnitNumber = Convert.ToInt32(sqlDataReader["UnitNumber"].ToString());
+                provenienceDatum.Depth = sqlDataReader["Depth"].ToString();
+                provenienceDatum.ExcavationDate = Convert.ToDateTime(sqlDataReader["ExcavationDate"].ToString());
+
+                provenienceData.Add(provenienceDatum);
+            }
+
+            return provenienceData;
+        }
     }
 }

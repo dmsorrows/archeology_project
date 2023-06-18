@@ -165,6 +165,7 @@ namespace webapi_01
             return artifacts;
         }
 
+
         // public static int InsertEmployee(ArtifactData employee, SqlConnection sqlConnection)
         // {
         //     string sql = "insert into Employee (LastName, FirstName, Salary) values (@LastName, @FirstName, @Salary);";
