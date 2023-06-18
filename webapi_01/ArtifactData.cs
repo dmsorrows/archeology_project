@@ -21,7 +21,7 @@ namespace webapi_01
         public string? Level2Name { get; set; }
         public int Level3Id { get; set; }
         public string? Level3Name { get; set; }
-        public int Level4Id { get; set; }
+        public int? Level4Id { get; set; }
         public string? Level4Name { get; set; }
         public string? AdditionalDescription { get; set; }
         public int ArtifactCount { get; set; }
@@ -48,7 +48,7 @@ namespace webapi_01
         //     LabTechInitials = labTechInitials;
         // }
         //Includes auto-incremented values
-        public ArtifactData(int artifactId, string projectNumber, string siteNumber, string accessionNumber, int fieldSerialNumber, int unitNumber, string depth, DateTime? excavationDate, string periodName, int level1Id, string level1Name, int level2Id, string level2Name, int level3Id, string level3Name, int level4Id, string? level4Name, string additionalDescription, int artifactCount, decimal artifactWeight, string labTechInitials, DateTime dateAnalyzed, int provenienceId)
+        public ArtifactData(int artifactId, string projectNumber, string siteNumber, string accessionNumber, int fieldSerialNumber, int unitNumber, string depth, DateTime? excavationDate, string periodName, int level1Id, string level1Name, int level2Id, string level2Name, int level3Id, string level3Name, int? level4Id, string? level4Name, string additionalDescription, int artifactCount, decimal artifactWeight, string labTechInitials, DateTime dateAnalyzed, int provenienceId)
         {
             ArtifactId = artifactId;
             ProjectNumber = projectNumber;
@@ -150,8 +150,8 @@ namespace webapi_01
                 artifact.Level2Name = sqlDataReader["Level2Name"].ToString();
                 artifact.Level3Id = Convert.ToInt32(sqlDataReader["Level3Id"].ToString());
                 artifact.Level3Name = sqlDataReader["Level3Name"].ToString();
-                artifact.Level4Id = Convert.ToInt32(sqlDataReader["Level4Id"].ToString() == "" ? "1" : sqlDataReader["Level4Id"].ToString()); 
-                artifact.Level4Name = sqlDataReader["Level4Name"].ToString() == "" ? "EMPTY" : sqlDataReader["Level4Name"].ToString();
+                artifact.Level4Id = Convert.ToInt32(sqlDataReader["Level4Id"].ToString() == "" ? "0" : sqlDataReader["Level4Id"].ToString()); 
+                artifact.Level4Name = sqlDataReader["Level4Name"].ToString() == "" ? "-" : sqlDataReader["Level4Name"].ToString();
                 artifact.AdditionalDescription = sqlDataReader["AdditionalDescription"].ToString();
                 artifact.ArtifactCount = Convert.ToInt32(sqlDataReader["ArtifactCount"].ToString());
                 artifact.ArtifactWeight = Convert.ToDecimal(sqlDataReader["ArtifactWeight"].ToString());
