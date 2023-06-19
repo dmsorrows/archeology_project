@@ -99,7 +99,8 @@ artifactTableText = artifactTableText + '<tr><th scope="row">' + artifact.artifa
 
 
 
-
+insert into ArtifactData (PeriodName, Level1Id, Level2Id, Level3Id, Level4Id, AdditionalDescription, ArtifactCount, ArtifactWeight, LabTechInitials, DateAnalyzed, ProvenienceId) 
+values ('Post-Contact', 5, 5, 5, 5, 'Insert Test', 5, 5.5, 'DMS', '2023-04-22 10:34:23.550', 6);
 
 
 

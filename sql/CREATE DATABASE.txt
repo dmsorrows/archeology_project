@@ -14,7 +14,7 @@ CREATE TABLE Provenience (
 );
 
 CREATE TABLE ArtifactData (
-  ArtifactId INTEGER NOT NULL,
+  ArtifactId INTEGER IDENTITY(1,1) NOT NULL,
   PeriodName VARCHAR(12) NOT NULL,
   Level1Id INTEGER NOT NULL,
   Level2Id INTEGER NOT NULL,

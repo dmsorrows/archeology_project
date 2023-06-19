@@ -55,39 +55,39 @@ public class ArtifactDataController : ControllerBase
     }
 
 
-    // [HttpGet]
-    // [Route("/InsertEmployee")]
-    // public Response InsertEmployee(string lastName, string firstName, string salary)
-    // {
-    //     Response response = new Response();
-    //     try
-    //     {
-    //         List<Employee> employees = new List<Employee>();
+    [HttpGet]
+    [Route("/InsertArtifact")]
+    public Response InsertArtifact(string periodName, string level1Id, string level2Id, string level3Id, string level4Id, string additionalDescription, string artifactCount, string artifactWeight, string labTechInitials, string dateAnalyzed, string provenienceId)
+    {
+        Response response = new Response();
+        try
+        {
+            List<ArtifactData> artifacts = new List<ArtifactData>();
 
-    //         Employee employee = new Employee(lastName, firstName, Convert.ToDecimal(salary));
+            ArtifactData artifact = new ArtifactData(periodName, Convert.ToInt32(level1Id), Convert.ToInt32(level2Id), Convert.ToInt32(level3Id), Convert.ToInt32(level4Id), additionalDescription, Convert.ToInt32(artifactCount), Convert.ToDecimal(artifactWeight), labTechInitials, Convert.ToDateTime(dateAnalyzed), Convert.ToInt32(provenienceId));
+            //http://localhost:5008/InsertArtifact?periodName=Post-Contact&level1Id=6&level2Id=6&level3Id=6&level4Id=6&additionalDescription=AnotherTestPost&artifactCount=6&artifactWeight=6.66&labTechInitials=LOL&dateAnalyzed=2023-04-22T10:34:23.666&provenienceId=6
+            int rowsAffected = 0;
 
-    //         int rowsAffected = 0;
+            string connectionString = GetConnectionString();
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            {
+                sqlConnection.Open();
+                rowsAffected = ArtifactData.InsertArtifact(artifact, sqlConnection);
+                artifacts = ArtifactData.SearchArtifacts(sqlConnection);
+            }
 
-    //         string connectionString = GetConnectionString();
-    //         using (SqlConnection sqlConnection = new SqlConnection(connectionString))
-    //         {
-    //             sqlConnection.Open();
-    //             rowsAffected = Employee.InsertEmployee(employee, sqlConnection);
-    //             employees = Employee.SearchEmployees(sqlConnection);
-    //         }
+            response.Result = (rowsAffected == 1) ? "success" : "failure";
+            response.Message = $"{rowsAffected} rows affected.";
+            response.Artifacts = artifacts;
+        }
+        catch (Exception e)
+        {
+            response.Result = "failure";
+            response.Message = e.Message;
+        }
 
-    //         response.Result = (rowsAffected == 1) ? "success" : "failure";
-    //         response.Message = $"{rowsAffected} rows affected.";
-    //         response.Employees = employees;
-    //     }
-    //     catch (Exception e)
-    //     {
-    //         response.Result = "failure";
-    //         response.Message = e.Message;
-    //     }
-
-    //     return response;
-    // }
+        return response;
+    }
 
     // [HttpGet]
     // [Route("/UpdateEmployee")]
