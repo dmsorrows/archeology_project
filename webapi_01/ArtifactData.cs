@@ -34,7 +34,7 @@ namespace webapi_01
         public ArtifactData()
         {
         }
-
+        //For inserting
         public ArtifactData(string periodName, int level1Id, int level2Id, int level3Id, int level4Id, string additionalDescription, int artifactCount, decimal artifactWeight, string labTechInitials, DateTime? dateAnalyzed, int provenienceId)
         {
             PeriodName = periodName;
@@ -50,6 +50,7 @@ namespace webapi_01
             ProvenienceId = provenienceId;
         }
 
+        //For searching
         public ArtifactData(int artifactId, string projectNumber, string siteNumber, string accessionNumber, int fieldSerialNumber, int unitNumber, string depth, DateTime? excavationDate, string periodName, int level1Id, string level1Name, int level2Id, string level2Name, int level3Id, string level3Name, int? level4Id, string? level4Name, string additionalDescription, int artifactCount, decimal artifactWeight, string labTechInitials, DateTime dateAnalyzed, int provenienceId)
         {
             ArtifactId = artifactId;

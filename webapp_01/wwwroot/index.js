@@ -22,8 +22,8 @@ function webapp_02() {
     // var buttonDelete = document.getElementById("button-delete");
     // var buttonDeleteCancel = document.getElementById("button-delete-cancel");
 
-    // var buttonInsert = document.getElementById("button-insert");
-    // var buttonInsertCancel = document.getElementById("button-insert-cancel");
+    var buttonInsert = document.getElementById("button-insert");
+    var buttonInsertCancel = document.getElementById("button-insert-cancel");
 
     //Add event listeners
 
@@ -36,8 +36,8 @@ function webapp_02() {
     // buttonDelete.addEventListener("click", deleteEmployee);
     // buttonDeleteCancel.addEventListener("click", deleteEmployeeCancel);
 
-    // buttonInsert.addEventListener("click", insertEmployee);
-    // buttonInsertCancel.addEventListener("click", insertEmployeeCancel);
+    buttonInsert.addEventListener("click", insertArtifact);
+    buttonInsertCancel.addEventListener("click", insertEmployeeCancel);
 
     //Functions
 
@@ -235,7 +235,7 @@ function webapp_02() {
 
 
     function showProvenienceData(provenienceData) {
-        var provenienceSelectText = "<div class='row mb-2'><select id='select-provenience' class='form-select form-select-sm'><option selected='' value='0'>Select a Provenience for the Artifact(s)</option>";
+        var provenienceSelectText = "<div class='row mb-2'><select id='select-provenience-innerHTML' class='form-select form-select-sm'><option selected='' value='0'>Select a Provenience for the Artifact(s)</option>";
 
         for (var i = 0; i < provenienceData.length; i++) {
             var provenience = provenienceData[i];
@@ -248,7 +248,7 @@ function webapp_02() {
     }
 
     function showLevel1Names(level1Names) {
-        var level1NameSelectText = "<div class='row mb-2'><select id='select-level1' class='form-select form-select-sm'><option selected='' value='0'>Level 1 - Pick a Base Material</option>";
+        var level1NameSelectText = "<div class='row mb-2'><select id='select-level1-innerHTML' class='form-select form-select-sm'><option selected='' value='0'>Level 1 - Pick a Base Material</option>";
 
         for (var i = 0; i < level1Names.length; i++) {
             var level1Name = level1Names[i];
@@ -261,7 +261,7 @@ function webapp_02() {
     }
 
     function showLevel2Names(level2Names) {
-        var level2NameSelectText = "<div class='row mb-2'><select id='select-level2' class='form-select form-select-sm'><option selected='' value='0'>Level 2 - Pick a Material/Type ID</option>";
+        var level2NameSelectText = "<div class='row mb-2'><select id='select-level2-innerHTML' class='form-select form-select-sm'><option selected='' value='0'>Level 2 - Pick a Material/Type ID</option>";
 
         for (var i = 0; i < level2Names.length; i++) {
             var level2Name = level2Names[i];
@@ -274,7 +274,7 @@ function webapp_02() {
     }
 
     function showLevel3Names(level3Names) {
-        var level3NameSelectText = "<div class='row mb-2'><select id='select-level3' class='form-select form-select-sm'><option selected='' value='0'>Level 3 - Pick a Manufacture or Material Type/Style</option>";
+        var level3NameSelectText = "<div class='row mb-2'><select id='select-level3-innerHTML' class='form-select form-select-sm'><option selected='' value='0'>Level 3 - Pick a Manufacture or Material Type/Style</option>";
 
         for (var i = 0; i < level3Names.length; i++) {
             var level3Name = level3Names[i];
@@ -287,7 +287,7 @@ function webapp_02() {
     }
 
     function showLevel4Names(level4Names) {
-        var level4NameSelectText = "<div class='row mb-2'><select id='select-level4' class='form-select form-select-sm'><option selected='' value='0'>Level 4 (if applicable) - Pick a Decoration or Style Type</option>";
+        var level4NameSelectText = "<div class='row mb-2'><select id='select-level4-innerHTML' class='form-select form-select-sm'><option selected='' value='0'>Level 4 (if applicable) - Pick a Decoration or Style Type</option>";
 
         for (var i = 0; i < level4Names.length; i++) {
             var level4Name = level4Names[i];
@@ -305,55 +305,88 @@ function webapp_02() {
         searchArtifacts();
     }
 
-    // function insertEmployee() {
+    function insertArtifact() {
 
-    //     var textFirstName = document.getElementById("text-insert-first-name");
-    //     var textLastName = document.getElementById("text-insert-last-name");
-    //     var textSalary = document.getElementById("text-insert-salary");
+        var selectPeriod = document.getElementById("select-period");
+        var selectLevel1InnerHTML = document.getElementById("select-level1-innerHTML");
+        var selectLevel2InnerHTML = document.getElementById("select-level2-innerHTML");
+        var selectLevel3InnerHTML = document.getElementById("select-level3-innerHTML");
+        var selectLevel4InnerHTML = document.getElementById("select-level4-innerHTML");        
+        var textAdditionalDescription = document.getElementById("text-insert-additional-description");
+        var textArtifactCount = document.getElementById("text-insert-artifact-count");
+        var textArtifactWeight = document.getElementById("text-insert-artifact-weight");
+        var textLabTechInitials = document.getElementById("text-insert-lab-tech-initials");
+        var textDateAnalyzed = document.getElementById("text-insert-date-analyzed");
+        var insertProvenienceInnerHTML = document.getElementById("select-provenience-innerHTML");
 
-    //     var url = 'http://localhost:5120/InsertEmployee?lastName=' + textLastName.value + '&firstName=' + textFirstName.value + '&salary=' + textSalary.value;
+        var url = 'http://localhost:5008/InsertArtifact?periodName=' + selectPeriod.value + '&level1Id=' + selectLevel1InnerHTML.value + '&level2Id=' + selectLevel2InnerHTML.value + '&level3Id=' + selectLevel3InnerHTML.value + '&level4Id=' + selectLevel4InnerHTML.value + '&additionalDescription=' + textAdditionalDescription.value + '&artifactCount=' + textArtifactCount.value + '&artifactWeight=' + textArtifactWeight.value + '&labTechInitials=' + textLabTechInitials.value + '&dateAnalyzed=' + textDateAnalyzed.value + '&provenienceId=' + insertProvenienceInnerHTML.value;
+            //http://localhost:5008/InsertArtifact?periodName=Post-Contact&level1Id=6&level2Id=6&level3Id=6&level4Id=6&additionalDescription=AnotherTestPost&artifactCount=6&artifactWeight=6.66&labTechInitials=LOL&dateAnalyzed=2023-04-22T10:34:23.666&provenienceId=6
 
-    //     var xhr = new XMLHttpRequest();
-    //     xhr.onreadystatechange = doAfterInsertEmployee;
-    //     xhr.open('GET', url);
-    //     xhr.send(null);
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = doAfterInsertArtifact;
+        xhr.open('GET', url);
+        xhr.send(null);
 
-    //     function doAfterInsertEmployee() {
-    //         var DONE = 4; // readyState 4 means the request is done.
-    //         var OK = 200; // status 200 is a successful return.
-    //         if (xhr.readyState === DONE) {
-    //             if (xhr.status === OK) {
+        function doAfterInsertArtifact() {
+            var DONE = 4; // readyState 4 means the request is done.
+            var OK = 200; // status 200 is a successful return.
+            if (xhr.readyState === DONE) {
+                if (xhr.status === OK) {
 
-    //                 var response = JSON.parse(xhr.responseText);
+                    var response = JSON.parse(xhr.responseText);
 
-    //                 if (response.result === "success") {
-    //                     showEmployees(response.employees);
-    //                 } else {
-    //                     alert("API Error: " + response.message);
-    //                 }
-    //             } else {
-    //                 alert("Server Error: " + xhr.status + " " + xhr.statusText);
-    //             }
-    //         }
-    //     };
+                    if (response.result === "success") {
+                        showArtifacts(response.artifacts);
+                    } else {
+                        alert("API Error: " + response.message);
+                    }
+                } else {
+                    alert("Server Error: " + xhr.status + " " + xhr.statusText);
+                }
+            }
+        };
 
-    //     textFirstName.value = "";
-    //     textLastName.value = "";
-    //     textSalary.value = "";
+        selectPeriod.value = 0;
+        selectLevel1InnerHTML.value = 0;
+        selectLevel2InnerHTML.value = 0;
+        selectLevel3InnerHTML.value = 0;
+        selectLevel4InnerHTML.value = 0;
+        textAdditionalDescription.value = "";
+        textArtifactCount.value = "";
+        textArtifactWeight.value = "";
+        textLabTechInitials.value = "";
+        textDateAnalyzed.value = "";
+        insertProvenienceInnerHTML.value = 0;
 
-    // };
+    };
 
-    // function insertEmployeeCancel() {
+    function insertEmployeeCancel() {
 
-    //     var textFirstName = document.getElementById("text-insert-first-name");
-    //     var textLastName = document.getElementById("text-insert-last-name");
-    //     var textSalary = document.getElementById("text-insert-salary");
+        var selectPeriod = document.getElementById("select-period");
+        var selectLevel1InnerHTML = document.getElementById("select-level1-innerHTML");
+        var selectLevel2InnerHTML = document.getElementById("select-level2-innerHTML");
+        var selectLevel3InnerHTML = document.getElementById("select-level3-innerHTML");
+        var selectLevel4InnerHTML = document.getElementById("select-level4-innerHTML");        
+        var textAdditionalDescription = document.getElementById("text-insert-additional-description");
+        var textArtifactCount = document.getElementById("text-insert-artifact-count");
+        var textArtifactWeight = document.getElementById("text-insert-artifact-weight");
+        var textLabTechInitials = document.getElementById("text-insert-lab-tech-initials");
+        var textDateAnalyzed = document.getElementById("text-insert-date-analyzed");
+        var insertProvenienceInnerHTML = document.getElementById("select-provenience-innerHTML");
 
-    //     textFirstName.value = "";
-    //     textLastName.value = "";
-    //     textSalary.value = "";
+        selectPeriod.value = 0;
+        selectLevel1InnerHTML.value = 0;
+        selectLevel2InnerHTML.value = 0;
+        selectLevel3InnerHTML.value = 0;
+        selectLevel4InnerHTML.value = 0;
+        textAdditionalDescription.value = "";
+        textArtifactCount.value = "";
+        textArtifactWeight.value = "";
+        textLabTechInitials.value = "";
+        textDateAnalyzed.value = "";
+        insertProvenienceInnerHTML.value = 0;
 
-    // }
+    }
 
     // //Update functions go here.
     // function updateEmployee() {
