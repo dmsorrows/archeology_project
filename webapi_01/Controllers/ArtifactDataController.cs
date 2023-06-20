@@ -89,71 +89,71 @@ public class ArtifactDataController : ControllerBase
         return response;
     }
 
-    // [HttpGet]
-    // [Route("/UpdateEmployee")]
-    // public Response UpdateEmployee(string employeeId, string lastName, string firstName, string salary)
-    // {
-    //     Response response = new Response();
+    [HttpGet]
+    [Route("/UpdateArtifact")]
+    public Response UpdateArtifact(string employeeId, string lastName, string firstName, string salary)
+    {
+        Response response = new Response();
 
-    //     try
-    //     {
-    //         List<Employee> employees = new List<Employee>();
-    //         Employee employee = new Employee(Convert.ToInt32(employeeId), lastName, firstName, Convert.ToDecimal(salary));
+        try
+        {
+            List<ArtifactData> artifacts = new List<ArtifactData>();
+            ArtifactData artifact = new ArtifactData(Convert.ToInt32(employeeId), lastName, firstName, Convert.ToDecimal(salary));
 
-    //         int rowsAffected = 0;
+            int rowsAffected = 0;
 
-    //         string connectionString = GetConnectionString();
-    //         using (SqlConnection sqlConnection = new SqlConnection(connectionString))
-    //         {
-    //             sqlConnection.Open();
-    //             rowsAffected = Employee.UpdateEmployee(employee, sqlConnection);
-    //             employees = Employee.SearchEmployees(sqlConnection);
-    //         }
+            string connectionString = GetConnectionString();
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            {
+                sqlConnection.Open();
+                rowsAffected = ArtifactData.UpdateArtifact(artifact, sqlConnection);
+                artifacts = ArtifactData.SearchArtifacts(sqlConnection);
+            }
 
-    //         response.Result = (rowsAffected == 1) ? "success" : "failure";
-    //         response.Message = $"{rowsAffected} rows affected.";
-    //         response.Employees = employees;
-    //     }
-    //     catch (Exception e)
-    //     {
-    //         response.Result = "failure";
-    //         response.Message = e.Message;
-    //     }
+            response.Result = (rowsAffected == 1) ? "success" : "failure";
+            response.Message = $"{rowsAffected} rows affected.";
+            response.Artifacts = artifacts;
+        }
+        catch (Exception e)
+        {
+            response.Result = "failure";
+            response.Message = e.Message;
+        }
 
-    //     return response;
-    // }
+        return response;
+    }
 
-    // [HttpGet]
-    // [Route("/DeleteEmployee")]
-    // public Response DeleteEmployee(string employeeId)
-    // {
-    //     Response response = new Response();
+    [HttpGet]
+    [Route("/DeleteArtifact")]
+    public Response DeleteArtifact(string artifactId)
+    {
+        Response response = new Response();
 
-    //     try
-    //     {
-    //         List<Employee> employees = new List<Employee>();
-    //         int rowsAffected = 0;
+        try
+        {
+            List<ArtifactData> artifacts = new List<ArtifactData>();
+            int rowsAffected = 0;
 
-    //         string connectionString = GetConnectionString();
-    //         using (SqlConnection sqlConnection = new SqlConnection(connectionString))
-    //         {
-    //             sqlConnection.Open();
-    //             rowsAffected = Employee.DeleteEmployee(Convert.ToInt32(employeeId), sqlConnection);
-    //             employees = Employee.SearchEmployees(sqlConnection);
-    //         }
+            string connectionString = GetConnectionString();
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            {
+                sqlConnection.Open();
+                rowsAffected = ArtifactData.DeleteArtifact(Convert.ToInt32(artifactId), sqlConnection);
+                artifacts = ArtifactData.SearchArtifacts(sqlConnection);
+            }
 
-    //         response.Result = (rowsAffected == 1) ? "success" : "failure";
-    //         response.Message = $"{rowsAffected} rows affected.";
-    //         response.Employees = employees;
-    //     }
-    //     catch (Exception e)
-    //     {
-    //         response.Result = "failure";
-    //         response.Message = e.Message;
-    //     }
+            response.Result = (rowsAffected == 1) ? "success" : "failure";
+            response.Message = $"{rowsAffected} rows affected.";
+            response.Artifacts = artifacts;
+        }
+        catch (Exception e)
+        {
+            response.Result = "failure";
+            response.Message = e.Message;
+        }
 
-    //     return response;
-    // }
+        return response;
+    }
 
     static string GetConnectionString()
     {

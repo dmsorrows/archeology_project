@@ -243,33 +243,21 @@ namespace webapi_01
         //     return rowsAffected;
         // }
 
-        // public static int DeleteEmployee(int employeeId, SqlConnection sqlConnection)
-        // {
-        //     string sql = "delete from Employee where EmployeeId = @EmployeeId;";
+        public static int DeleteArtifact(int artifactId, SqlConnection sqlConnection)
+        {
+            string sql = "DELETE FROM ArtifactData WHERE ArtifactId = @ArtifactId;";
 
-        //     SqlCommand sqlCommand = new SqlCommand(sql, sqlConnection);
-        //     sqlCommand.CommandType = System.Data.CommandType.Text;
+            SqlCommand sqlCommand = new SqlCommand(sql, sqlConnection);
+            sqlCommand.CommandType = System.Data.CommandType.Text;
 
-        //     SqlParameter paramEmployeeId = new SqlParameter("@EmployeeId", employeeId);
-        //     paramEmployeeId.DbType = System.Data.DbType.Int32;
-        //     sqlCommand.Parameters.Add(paramEmployeeId);
+            SqlParameter paramArtifactId = new SqlParameter("@ArtifactId", artifactId);
+            paramArtifactId.DbType = System.Data.DbType.Int32;
+            sqlCommand.Parameters.Add(paramArtifactId);
 
-        //     int rowsAffected = sqlCommand.ExecuteNonQuery();
-        //     return rowsAffected;
-        // }
+            int rowsAffected = sqlCommand.ExecuteNonQuery();
+            return rowsAffected;
+        }
 
-        // public void ShowEmployee()
-        // {
-        //     Console.WriteLine($"{ArtifactId}, {PeriodName}, {SiteNumber}, {Salary}");
-        // }
-
-        // public static void ShowEmployees(List<ArtifactData> employees)
-        // {
-        //     foreach (ArtifactData employee in employees)
-        //     {
-        //         employee.ShowEmployee();
-        //     }
-        // }
 
     }
 }

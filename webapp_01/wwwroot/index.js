@@ -220,17 +220,40 @@ function webapp_02() {
     }
 
     function showArtifacts(artifacts) {
-        var artifactTableText = '<table class="table table-striped table-sm"><thead><tr><th scope="col"Artifact Id</th><th scope="col"Project Number</th><th scope="col">Site Number</th><th scope="col">Accession Number</th><th scope="col">FSN</th><th scope="col">Unit</th><th scope="col">Depth (cmbd)</th><th scope="col">Excavation Date</th><th scope="col">Period</th><th scope="col">Level 1 Id</th><th scope="col">Level 1</th><th scope="col">Level 2 Id</th><th scope="col">Level 2</th><th scope="col">Level 3 Id</th><th scope="col">Level 3</th><th scope="col">Level 4 Id</th><th scope="col">Level 4</th><th scope="col">Additional Description</th><th scope="col">Artifact Count</th><th scope="col">Weight (g)</th><th scope="col">Analyzer</th><th scope="col">Date Analyzed</th><th scope="col">Provenience Id</th></tr></thead><tbody>';
-
+        var artifactTableText = '<table class="table table-striped table-sm"><thead><tr><th scope="col"Artifact Id</th><th scope="col"Project Number</th><th scope="col">Site Number</th><th scope="col">Accession Number</th><th scope="col">FSN</th><th scope="col">Unit</th><th scope="col">Depth (cmbd)</th><th scope="col">Excavation Date</th><th scope="col">Period</th><th scope="col">Level 1 Id</th><th scope="col">Level 1</th><th scope="col">Level 2 Id</th><th scope="col">Level 2</th><th scope="col">Level 3 Id</th><th scope="col">Level 3</th><th scope="col">Level 4 Id</th><th scope="col">Level 4</th><th scope="col">Additional Description</th><th scope="col">Artifact Count</th><th scope="col">Weight (g)</th><th scope="col">Analyzer</th><th scope="col">Date Analyzed</th><th scope="col">Provenience Id</th><th></th></tr></thead><tbody>';
+        //<td><div class='row g-2'><div class='col-auto'><button type='button' data-artifact-id='" + artifact.artifactId = "' class='btn btn-outline-primary btn-sm btn-artifact-table-update'>Update</button></div><div class='col-auto'><button type='button' data-artifact-id='" + artifact.artifactId = "' class='btn btn-outline-primary btn-sm btn-artifact-table-delete'>Delete</button></div></div>
         for (var i = 0; i < artifacts.length; i++) {
             var artifact = artifacts[i];
 
-            artifactTableText = artifactTableText + '<tr><th scope="row">' + artifact.artifactId + '</th><td>' + artifact.projectNumber + '</td><td>' + artifact.siteNumber + '</td><td>' + artifact.accessionNumber + '</td><td>' + artifact.fieldSerialNumber + '</td><td>' + artifact.unitNumber + '</td><td>' + artifact.depth + '</td><td>' + artifact.excavationDate + '</td><td>' + artifact.periodName + '</td><td>' + artifact.level1Id + '</td><td>' + artifact.level1Name + '</td><td>' + artifact.level2Id + '</td><td>' + artifact.level2Name + '</td><td>' + artifact.level3Id + '</td><td>' + artifact.level3Name + '</td><td>' + artifact.level4Id + '</td><td>' + artifact.level4Name + '</td><td>' + artifact.additionalDescription + '</td><td>' + artifact.artifactCount + '</td><td>' + artifact.artifactWeight + '</td><td>' + artifact.labTechInitials + '</td><td>' + artifact.dateAnalyzed + '</td><td>' + artifact.provenienceId + '</td></tr>';
+            artifactTableText = artifactTableText + '<tr><th scope="row">' + artifact.artifactId + '</th><td>' + artifact.projectNumber + '</td><td>' + artifact.siteNumber + '</td><td>' + artifact.accessionNumber + '</td><td>' + artifact.fieldSerialNumber + '</td><td>' + artifact.unitNumber + '</td><td>' + artifact.depth + '</td><td>' + artifact.excavationDate + '</td><td>' + artifact.periodName + '</td><td>' + artifact.level1Id + '</td><td>' + artifact.level1Name + '</td><td>' + artifact.level2Id + '</td><td>' + artifact.level2Name + '</td><td>' + artifact.level3Id + '</td><td>' + artifact.level3Name + '</td><td>' + artifact.level4Id + '</td><td>' + artifact.level4Name + '</td><td>' + artifact.additionalDescription + '</td><td>' + artifact.artifactCount + '</td><td>' + artifact.artifactWeight + '</td><td>' + artifact.labTechInitials + '</td><td>' + artifact.dateAnalyzed + '</td><td>' + artifact.provenienceId + '</td><td><div class="row g-2"><div class="col-auto"><button type="button" data-artifact-id="' + artifact.artifactId + '" class="btn btn-outline-primary btn-sm btn-artifact-table-update">Update</button></div><div class="col-auto"><button type="button" data-artifact-id="' + artifact.artifactId + '" class="btn btn-outline-primary btn-sm btn-artifact-table-delete">Delete</button></div></div></td></tr>';
         }
 
         artifactTableText = artifactTableText + '</tbody></table>';
 
         artifactTable.innerHTML = artifactTableText;
+
+        // var updateButtons = document.getElementsByClassName("btn-artifact-table-update");
+
+        // for (var i = 0; i < updateButtons.length; i++) {
+        //     var updateButton = updateButtons[i];
+        //     updateButton.addEventListener("click", handleArtifactTableUpdateClick);
+        // }
+
+        var deleteButtons = document.getElementsByClassName("btn-artifact-table-delete");
+
+        for (var i = 0; i < deleteButtons.length; i++) {
+            var deleteButton = deleteButtons[i];
+            deleteButton.addEventListener("click", handleArtifactTableDeleteClick);
+        }
+
+        // function handleArtifactTableUpdateClick(e) {
+            
+        // }
+
+        function handleArtifactTableDeleteClick(e) {
+            var artifactId = e.target.getAttribute("data-artifact-id");
+            deleteArtifact(artifactId);
+        }
     }
 
 
@@ -443,40 +466,35 @@ function webapp_02() {
 
     // }
 
-    // //Delete functions go here.
-    // function deleteEmployee() {
+    //Delete functions go here.
+    function deleteArtifact(artifactId) {
 
-    //     var textEmployeeId = document.getElementById("text-delete-employee-id");
+        var url = 'http://localhost:5008/DeleteArtifact?artifactid=' + artifactId;
 
-    //     var url = 'http://localhost:5120/DeleteEmployee?employeeid=' + textEmployeeId.value;
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = doAfterDeleteArtifact;
+        xhr.open('GET', url);
+        xhr.send(null);
 
-    //     var xhr = new XMLHttpRequest();
-    //     xhr.onreadystatechange = doAfterDeleteEmployee;
-    //     xhr.open('GET', url);
-    //     xhr.send(null);
+        function doAfterDeleteArtifact() {
+            var DONE = 4; // readyState 4 means the request is done.
+            var OK = 200; // status 200 is a successful return.
+            if (xhr.readyState === DONE) {
+                if (xhr.status === OK) {
 
-    //     function doAfterDeleteEmployee() {
-    //         var DONE = 4; // readyState 4 means the request is done.
-    //         var OK = 200; // status 200 is a successful return.
-    //         if (xhr.readyState === DONE) {
-    //             if (xhr.status === OK) {
+                    var response = JSON.parse(xhr.responseText);
 
-    //                 var response = JSON.parse(xhr.responseText);
-
-    //                 if (response.result === "success") {
-    //                     showEmployees(response.employees);
-    //                 } else {
-    //                     alert("API Error: " + response.message);
-    //                 }
-    //             } else {
-    //                 alert("Server Error: " + xhr.status + " " + xhr.statusText);
-    //             }
-    //         }
-    //     };
-
-    //     textEmployeeId.value = "";
-
-    // };
+                    if (response.result === "success") {
+                        showArtifacts(response.artifacts);
+                    } else {
+                        alert("API Error: " + response.message);
+                    }
+                } else {
+                    alert("Server Error: " + xhr.status + " " + xhr.statusText);
+                }
+            }
+        };
+    };
 
     // function deleteEmployeeCancel() {
     //     var textEmployeeId = document.getElementById("text-delete-employee-id");
