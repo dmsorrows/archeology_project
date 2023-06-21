@@ -91,14 +91,14 @@ public class ArtifactDataController : ControllerBase
 
     [HttpGet]
     [Route("/UpdateArtifact")]
-    public Response UpdateArtifact(string employeeId, string lastName, string firstName, string salary)
+    public Response UpdateArtifact(string artifactId, string periodName, string level1Id, string level2Id, string level3Id, string level4Id, string additionalDescription, string artifactCount, string artifactWeight, string labTechInitials, string dateAnalyzed, string provenienceId)
     {
         Response response = new Response();
 
         try
         {
             List<ArtifactData> artifacts = new List<ArtifactData>();
-            ArtifactData artifact = new ArtifactData(Convert.ToInt32(employeeId), lastName, firstName, Convert.ToDecimal(salary));
+            ArtifactData artifact = new ArtifactData(Convert.ToInt32(artifactId), periodName, Convert.ToInt32(level1Id), Convert.ToInt32(level2Id), Convert.ToInt32(level3Id), Convert.ToInt32(level4Id), additionalDescription, Convert.ToInt32(artifactCount), Convert.ToDecimal(artifactWeight), labTechInitials, Convert.ToDateTime(dateAnalyzed), Convert.ToInt32(provenienceId));
 
             int rowsAffected = 0;
 

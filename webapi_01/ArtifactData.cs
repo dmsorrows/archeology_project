@@ -49,7 +49,22 @@ namespace webapi_01
             DateAnalyzed = dateAnalyzed;
             ProvenienceId = provenienceId;
         }
-
+        //For updating
+        public ArtifactData(int artifactId, string periodName, int level1Id, int level2Id, int level3Id, int level4Id, string additionalDescription, int artifactCount, decimal artifactWeight, string labTechInitials, DateTime? dateAnalyzed, int provenienceId)
+        {
+            ArtifactId = artifactId;
+            PeriodName = periodName;
+            Level1Id = level1Id;
+            Level2Id = level2Id;
+            Level3Id = level3Id;
+            Level4Id = level4Id;
+            AdditionalDescription = additionalDescription;
+            ArtifactCount = artifactCount;
+            ArtifactWeight = artifactWeight;
+            LabTechInitials = labTechInitials;
+            DateAnalyzed = dateAnalyzed;
+            ProvenienceId = provenienceId;
+        }
         //For searching
         public ArtifactData(int artifactId, string projectNumber, string siteNumber, string accessionNumber, int fieldSerialNumber, int unitNumber, string depth, DateTime? excavationDate, string periodName, int level1Id, string level1Name, int level2Id, string level2Name, int level3Id, string level3Name, int? level4Id, string? level4Name, string additionalDescription, int artifactCount, decimal artifactWeight, string labTechInitials, DateTime dateAnalyzed, int provenienceId)
         {
@@ -216,32 +231,55 @@ namespace webapi_01
             return rowsAffected;
         }
 
-        // public static int UpdateEmployee(ArtifactData employee, SqlConnection sqlConnection)
-        // {
-        //     string sql = "update Employee set LastName = @LastName, FirstName = @FirstName, Salary = @Salary where EmployeeId = @EmployeeId;";
+        public static int UpdateArtifact(ArtifactData artifact, SqlConnection sqlConnection)
+        {
+            string sql = "UPDATE ArtifactData SET PeriodName = @PeriodName, Level1Id = @Level1Id, Level2Id, Level3Id = @Level3Id, Level4Id = @Level4Id, AdditionalDescription = @AdditionalDescription, ArtifactCount = @ArtifactCount, ArtifactWeight = @ArtifactWeight, LabTechInitials = @LabTechInitials, DateAnalyzed = @DateAnalyzed, ProvenienceId = @ProvenienceId WHERE ArtifactId = @ArtifactId;";
 
 
-        //     SqlCommand sqlCommand = new SqlCommand(sql, sqlConnection);
-        //     sqlCommand.CommandType = System.Data.CommandType.Text;
+            SqlCommand sqlCommand = new SqlCommand(sql, sqlConnection);
+            sqlCommand.CommandType = System.Data.CommandType.Text;
 
-        //     SqlParameter paramLastName = new SqlParameter("@LastName", employee.PeriodName);
-        //     SqlParameter paramFirstName = new SqlParameter("@FirstName", employee.SiteNumber);
-        //     SqlParameter paramSalary = new SqlParameter("@Salary", employee.Salary);
-        //     SqlParameter paramEmployeeId = new SqlParameter("@EmployeeId", employee.ArtifactId);
+            SqlParameter paramPeriodName = new SqlParameter("@PeriodName", artifact.PeriodName);
+            SqlParameter paramLevel1Id = new SqlParameter("@Level1Id", artifact.Level1Id);
+            SqlParameter paramLevel2Id = new SqlParameter("@Level2Id", artifact.Level2Id);
+            SqlParameter paramLevel3Id = new SqlParameter("@Level3Id", artifact.Level3Id);
+            SqlParameter paramLevel4Id = new SqlParameter("@Level4Id", artifact.Level4Id);
+            SqlParameter paramAdditionalDescription = new SqlParameter("@AdditionalDescription", artifact.AdditionalDescription);
+            SqlParameter paramArtifactCount = new SqlParameter("@ArtifactCount", artifact.ArtifactCount);
+            SqlParameter paramArtifactWeight = new SqlParameter("@ArtifactWeight", artifact.ArtifactWeight);
+            SqlParameter paramLabTechInitials = new SqlParameter("@LabTechInitials", artifact.LabTechInitials);
+            SqlParameter paramDateAnalyzed = new SqlParameter("@DateAnalyzed", artifact.DateAnalyzed);
+            SqlParameter paramProvenienceId = new SqlParameter("@ProvenienceId", artifact.ProvenienceId);
 
-        //     paramLastName.DbType = System.Data.DbType.String;
-        //     paramFirstName.DbType = System.Data.DbType.String;
-        //     paramSalary.DbType = System.Data.DbType.Decimal;
-        //     paramEmployeeId.DbType = System.Data.DbType.Int32;
+            SqlParameter paramArtifactId = new SqlParameter("@ArtifactId", artifact.ArtifactId);
 
-        //     sqlCommand.Parameters.Add(paramLastName);
-        //     sqlCommand.Parameters.Add(paramFirstName);
-        //     sqlCommand.Parameters.Add(paramSalary);
-        //     sqlCommand.Parameters.Add(paramEmployeeId);
+            paramPeriodName.DbType = System.Data.DbType.String;
+            paramLevel1Id.DbType = System.Data.DbType.Int32;
+            paramLevel2Id.DbType = System.Data.DbType.Int32;
+            paramLevel3Id.DbType = System.Data.DbType.Int32;
+            paramLevel4Id.DbType = System.Data.DbType.Int32;
+            paramAdditionalDescription.DbType = System.Data.DbType.String;
+            paramArtifactCount.DbType = System.Data.DbType.Int32;
+            paramArtifactWeight.DbType = System.Data.DbType.Decimal;
+            paramLabTechInitials.DbType = System.Data.DbType.String;
+            paramDateAnalyzed.DbType = System.Data.DbType.DateTime;
+            paramProvenienceId.DbType = System.Data.DbType.Int32;
 
-        //     int rowsAffected = sqlCommand.ExecuteNonQuery();
-        //     return rowsAffected;
-        // }
+            sqlCommand.Parameters.Add(paramPeriodName);
+            sqlCommand.Parameters.Add(paramLevel1Id);
+            sqlCommand.Parameters.Add(paramLevel2Id);
+            sqlCommand.Parameters.Add(paramLevel3Id);
+            sqlCommand.Parameters.Add(paramLevel4Id);
+            sqlCommand.Parameters.Add(paramAdditionalDescription);
+            sqlCommand.Parameters.Add(paramArtifactCount);
+            sqlCommand.Parameters.Add(paramArtifactWeight);
+            sqlCommand.Parameters.Add(paramLabTechInitials);
+            sqlCommand.Parameters.Add(paramDateAnalyzed);
+            sqlCommand.Parameters.Add(paramProvenienceId);
+
+            int rowsAffected = sqlCommand.ExecuteNonQuery();
+            return rowsAffected;
+        }
 
         public static int DeleteArtifact(int artifactId, SqlConnection sqlConnection)
         {
