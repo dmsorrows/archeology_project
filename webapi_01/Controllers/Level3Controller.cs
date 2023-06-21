@@ -53,6 +53,45 @@ public class Level3Controller : ControllerBase
         return response;
     }
 
+    [HttpGet]
+    [Route("/GetLevel3NamesForUpdate")]
+    public Response GetLevel3NamesForUpdate()
+    {
+        Response response = new Response();
+        try
+        {
+            List<Level3> level3Names = new List<Level3>();
+
+            string connectionString = GetConnectionString();
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            {
+                sqlConnection.Open();
+                level3Names = Level3.GetLevel3NamesForUpdate(sqlConnection);
+            }
+
+            string message = "";
+
+            if (level3Names.Count() > 0)
+            {
+                message = $"Found Level 3 names!";
+            }
+            else
+            {
+                message = "No Level 3 names met your search criteria.";
+            }
+
+            response.Result = "success";
+            response.Message = message;
+            response.Level3Names = level3Names;
+        }
+        catch (Exception e)
+        {
+            response.Result = "failure";
+            response.Message = e.Message;
+        }
+        return response;
+    }
+
     static string GetConnectionString()
     {
         string serverName = @"PALEO\SQLEXPRESS"; //Change to the "Server Name" you see when you launch SQL Server Management Studio.

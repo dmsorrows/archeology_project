@@ -52,5 +52,29 @@ namespace webapi_01
 
             return level1Names;
         }
+
+        public static List<Level1> GetLevel1NamesForUpdate(SqlConnection sqlConnection)
+        {
+            List<Level1> level1Names = new List<Level1>();
+
+            string sql = "SELECT Level1Id, Level1Name FROM artifacts_db.dbo.Level1;";
+
+            SqlCommand sqlCommand = new SqlCommand(sql, sqlConnection);
+            sqlCommand.CommandType = System.Data.CommandType.Text;
+
+            SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+            
+            while (sqlDataReader.Read())
+            {
+                Level1 level1Name = new Level1();
+
+                level1Name.Level1Id = Convert.ToInt32(sqlDataReader["Level1Id"].ToString());
+                level1Name.Level1Name = sqlDataReader["Level1Name"].ToString();
+
+                level1Names.Add(level1Name);
+            }
+
+            return level1Names;
+        }
     }
 }

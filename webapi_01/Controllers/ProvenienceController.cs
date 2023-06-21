@@ -53,6 +53,45 @@ public class ProvenienceController : ControllerBase
         return response;
     }
 
+    [HttpGet]
+    [Route("/GetProvenienceDataForUpdate")]
+    public Response GetProvenienceDataForUpdate()
+    {
+        Response response = new Response();
+        try
+        {
+            List<Provenience> provenienceData = new List<Provenience>();
+
+            string connectionString = GetConnectionString();
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            {
+                sqlConnection.Open();
+                provenienceData = Provenience.GetProvenienceDataForUpdate(sqlConnection);
+            }
+
+            string message = "";
+
+            if (provenienceData.Count() > 0)
+            {
+                message = $"You found some provenience data!";
+            }
+            else
+            {
+                message = "No provenience data met your search criteria.";
+            }
+
+            response.Result = "success";
+            response.Message = message;
+            response.ProvenienceData = provenienceData;
+        }
+        catch (Exception e)
+        {
+            response.Result = "failure";
+            response.Message = e.Message;
+        }
+        return response;
+    }
+
     static string GetConnectionString()
     {
         string serverName = @"PALEO\SQLEXPRESS"; //Change to the "Server Name" you see when you launch SQL Server Management Studio.
