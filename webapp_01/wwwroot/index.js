@@ -561,12 +561,12 @@ function webapp_02() {
         var textArtifactCount = document.getElementById("text-insert-artifact-count");
         var textArtifactWeight = document.getElementById("text-insert-artifact-weight");
         var textLabTechInitials = document.getElementById("text-insert-lab-tech-initials");
-        var textDateAnalyzed = document.getElementById("text-insert-date-analyzed");
         var selectProvenienceInnerHTML = document.getElementById("select-provenience-innerHTML");
 
-        var url = 'http://localhost:5008/InsertArtifact?periodName=' + selectPeriod.value + '&level1Id=' + selectLevel1InnerHTML.value + '&level2Id=' + selectLevel2InnerHTML.value + '&level3Id=' + selectLevel3InnerHTML.value + '&level4Id=' + selectLevel4InnerHTML.value + '&additionalDescription=' + textAdditionalDescription.value + '&artifactCount=' + textArtifactCount.value + '&artifactWeight=' + textArtifactWeight.value + '&labTechInitials=' + textLabTechInitials.value + '&dateAnalyzed=' + textDateAnalyzed.value + '&provenienceId=' + selectProvenienceInnerHTML.value;
-            //http://localhost:5008/InsertArtifact?periodName=Post-Contact&level1Id=6&level2Id=6&level3Id=6&level4Id=6&additionalDescription=AnotherTestPost&artifactCount=6&artifactWeight=6.66&labTechInitials=LOL&dateAnalyzed=2023-04-22T10:34:23.666&provenienceId=6
-            //2023-04-22T10:34:23.666
+        var url = 'http://localhost:5008/InsertArtifact?periodName=' + selectPeriod.value + '&level1Id=' + selectLevel1InnerHTML.value + '&level2Id=' + selectLevel2InnerHTML.value + '&level3Id=' + selectLevel3InnerHTML.value + '&level4Id=' + selectLevel4InnerHTML.value + '&additionalDescription=' + textAdditionalDescription.value + '&artifactCount=' + textArtifactCount.value + '&artifactWeight=' + textArtifactWeight.value + '&labTechInitials=' + textLabTechInitials.value + '&provenienceId=' + selectProvenienceInnerHTML.value;
+
+        //http://localhost:5008/InsertArtifact?periodName=Post-Contact&level1Id=6&level2Id=6&level3Id=6&level4Id=6&additionalDescription=AnotherTestPost&artifactCount=6&artifactWeight=6.66&labTechInitials=LOL&provenienceId=6
+        //2023-04-22T10:34:23.666
 
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = doAfterInsertArtifact;
@@ -601,7 +601,6 @@ function webapp_02() {
         textArtifactCount.value = "";
         textArtifactWeight.value = "";
         textLabTechInitials.value = "";
-        textDateAnalyzed.value = "";
         selectProvenienceInnerHTML.value = 0;
 
     };
@@ -617,7 +616,6 @@ function webapp_02() {
         var textArtifactCount = document.getElementById("text-insert-artifact-count");
         var textArtifactWeight = document.getElementById("text-insert-artifact-weight");
         var textLabTechInitials = document.getElementById("text-insert-lab-tech-initials");
-        var textDateAnalyzed = document.getElementById("text-insert-date-analyzed");
         var selectProvenienceInnerHTML = document.getElementById("select-provenience-innerHTML");
 
         selectPeriod.value = 0;
@@ -629,7 +627,6 @@ function webapp_02() {
         textArtifactCount.value = "";
         textArtifactWeight.value = "";
         textLabTechInitials.value = "";
-        textDateAnalyzed.value = "";
         selectProvenienceInnerHTML.value = 0;
 
     }
@@ -647,10 +644,9 @@ function webapp_02() {
         var textArtifactCount = document.getElementById("text-update-artifact-count");
         var textArtifactWeight = document.getElementById("text-update-artifact-weight");
         var textLabTechInitials = document.getElementById("text-update-lab-tech-initials");
-        var textDateAnalyzed = document.getElementById("text-update-date-analyzed");
         var updateSelectProvenienceInnerHTML = document.getElementById("update-select-provenience-innerHTML");
 
-        var url = 'http://localhost:5008/UpdateArtifact?artifactId=' + textArtifactId.value + '&periodName=' + selectPeriod.value + '&level1Id=' + updateSelectLevel1InnerHTML.value + '&level2Id=' + updateSelectLevel2InnerHTML.value + '&level3Id=' + updateSelectLevel3InnerHTML.value + '&level4Id=' + updateSelectLevel4InnerHTML.value + '&additionalDescription=' + textAdditionalDescription.value + '&artifactCount=' + textArtifactCount.value + '&artifactWeight=' + textArtifactWeight.value + '&labTechInitials=' + textLabTechInitials.value + '&dateAnalyzed=' + textDateAnalyzed.value + '&provenienceId=' + updateSelectProvenienceInnerHTML.value; 
+        var url = 'http://localhost:5008/UpdateArtifact?artifactId=' + textArtifactId.value + '&periodName=' + selectPeriod.value + '&level1Id=' + updateSelectLevel1InnerHTML.value + '&level2Id=' + updateSelectLevel2InnerHTML.value + '&level3Id=' + updateSelectLevel3InnerHTML.value + '&level4Id=' + updateSelectLevel4InnerHTML.value + '&additionalDescription=' + textAdditionalDescription.value + '&artifactCount=' + textArtifactCount.value + '&artifactWeight=' + textArtifactWeight.value + '&labTechInitials=' + textLabTechInitials.value + '&provenienceId=' + updateSelectProvenienceInnerHTML.value; 
 
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = doAfterUpdateArtifact;
@@ -686,7 +682,6 @@ function webapp_02() {
         textArtifactCount.value = "";
         textArtifactWeight.value = "";
         textLabTechInitials.value = "";
-        textDateAnalyzed.value = "";
         updateSelectProvenienceInnerHTML.value = 0;
 
     };
@@ -703,7 +698,6 @@ function webapp_02() {
         var textArtifactCount = document.getElementById("text-update-artifact-count");
         var textArtifactWeight = document.getElementById("text-update-artifact-weight");
         var textLabTechInitials = document.getElementById("text-update-lab-tech-initials");
-        var textDateAnalyzed = document.getElementById("text-update-date-analyzed");
         var updateSelectProvenienceInnerHTML = document.getElementById("update-select-provenience-innerHTML");
 
         textArtifactId.value = "";
@@ -716,7 +710,6 @@ function webapp_02() {
         textArtifactCount.value = "";
         textArtifactWeight.value = "";
         textLabTechInitials.value = "";
-        textDateAnalyzed.value = "";
         updateSelectProvenienceInnerHTML.value = 0;
 
     }

@@ -35,7 +35,7 @@ namespace webapi_01
         {
         }
         //For inserting
-        public ArtifactData(string periodName, int level1Id, int level2Id, int level3Id, int level4Id, string additionalDescription, int artifactCount, decimal artifactWeight, string labTechInitials, DateTime? dateAnalyzed, int provenienceId)
+        public ArtifactData(string periodName, int level1Id, int level2Id, int level3Id, int level4Id, string additionalDescription, int artifactCount, decimal artifactWeight, string labTechInitials, int provenienceId)
         {
             PeriodName = periodName;
             Level1Id = level1Id;
@@ -46,11 +46,11 @@ namespace webapi_01
             ArtifactCount = artifactCount;
             ArtifactWeight = artifactWeight;
             LabTechInitials = labTechInitials;
-            DateAnalyzed = dateAnalyzed;
+            DateAnalyzed = DateTime.Now;
             ProvenienceId = provenienceId;
         }
         //For updating
-        public ArtifactData(int artifactId, string periodName, int level1Id, int level2Id, int level3Id, int level4Id, string additionalDescription, int artifactCount, decimal artifactWeight, string labTechInitials, DateTime? dateAnalyzed, int provenienceId)
+        public ArtifactData(int artifactId, string periodName, int level1Id, int level2Id, int level3Id, int level4Id, string additionalDescription, int artifactCount, decimal artifactWeight, string labTechInitials, int provenienceId)
         {
             ArtifactId = artifactId;
             PeriodName = periodName;
@@ -62,7 +62,7 @@ namespace webapi_01
             ArtifactCount = artifactCount;
             ArtifactWeight = artifactWeight;
             LabTechInitials = labTechInitials;
-            DateAnalyzed = dateAnalyzed;
+            DateAnalyzed = DateTime.Now;
             ProvenienceId = provenienceId;
         }
         //For searching
@@ -174,7 +174,7 @@ namespace webapi_01
                 artifact.ArtifactCount = Convert.ToInt32(sqlDataReader["ArtifactCount"].ToString());
                 artifact.ArtifactWeight = Convert.ToDecimal(sqlDataReader["ArtifactWeight"].ToString());
                 artifact.LabTechInitials = sqlDataReader["LabTechInitials"].ToString();
-                artifact.DateAnalyzed = Convert.ToDateTime(sqlDataReader["DateAnalyzed"].ToString()); 
+                artifact.DateAnalyzed = Convert.ToDateTime(sqlDataReader["DateAnalyzed"].ToString() == "" ? DateTime.Now : sqlDataReader["DateAnalyzed"].ToString()); 
                 artifact.ProvenienceId = Convert.ToInt32(sqlDataReader["ProvenienceId"].ToString());
 
                 artifacts.Add(artifact);
