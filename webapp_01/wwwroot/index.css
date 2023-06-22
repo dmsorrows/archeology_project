@@ -1,11 +1,12 @@
 body {
-    background-color: lavender;
+    background-color: #CCAFA5
+    ;
 }
 
 
 .my-header,
 .my-footer {
-    background-color: darkgray;
+    background-color: #EDE7DC;
     text-align: center;
     color: rgb(255, 255, 255);
 }
@@ -20,17 +21,17 @@ h4 {
 }
 
 #form-insert {
-    background-color: lightgrey;
+    background-color: #DCD2CC;
     border: 2px solid rgb(0, 0, 0);
 }
 
 #form-update {
-    background-color: lightgrey;
+    background-color: #DCD2CC;
     border: 2px solid rgb(0, 0, 0);
 }
 
 #form-search {
-    background-color: lightgrey;
+    background-color: #BDC3CB;
     border: 2px solid rgb(0, 0, 0);
 }
 
