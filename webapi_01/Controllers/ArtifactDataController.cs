@@ -57,7 +57,7 @@ public class ArtifactDataController : ControllerBase
 
     [HttpGet]
     [Route("/InsertArtifact")]
-    public Response InsertArtifact(string periodName, string level1Id, string level2Id, string level3Id, string level4Id, string additionalDescription, string artifactCount, string artifactWeight, string labTechInitials, string provenienceId)
+    public Response InsertArtifact(string periodName, string level1Id, string level2Id, string level3Id, string? level4Id, string? additionalDescription, string artifactCount, string artifactWeight, string labTechInitials, string provenienceId)
     {
         Response response = new Response();
         try
@@ -91,7 +91,7 @@ public class ArtifactDataController : ControllerBase
 
     [HttpGet]
     [Route("/UpdateArtifact")]
-    public Response UpdateArtifact(string artifactId, string periodName, string level1Id, string level2Id, string level3Id, string level4Id, string additionalDescription, string artifactCount, string artifactWeight, string labTechInitials, string provenienceId)
+    public Response UpdateArtifact(string artifactId, string periodName, string level1Id, string level2Id, string level3Id, string? level4Id, string? additionalDescription, string artifactCount, string artifactWeight, string labTechInitials, string provenienceId)
     {
         Response response = new Response();
 

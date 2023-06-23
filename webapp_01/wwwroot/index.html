@@ -39,14 +39,14 @@
 
         <div id="form-insert" class="text-center col">
           <h4>Artifact Insert</h4>
-          <form class="row align-items-start">
+          <form name="insertForm" class="row align-items-start" onsubmit="return validateInsertForm()">
 
             <div class="row mb-2">
               <div id="select-provenience"></div>
             </div>
 
             <div>
-              <select class="row mb-2 form-select form-select-sm" id="select-period">
+              <select name="selectPeriod" class="row mb-2 form-select form-select-sm" id="select-period">
                   <option value="0" selected>Select a Time Period for the Artifact(s)</option>
                   <option value="Pre-Contact">Pre-Contact</option>
                   <option value="Post-Contact">Post-Contact</option>
@@ -70,8 +70,7 @@
             </div>
 
             <div class="input-group-sm mb-3">
-              <label for="text-insert-additional-description" class="form-label">Additional Description:</label>
-              <textarea id="text-insert-additional-description" type="text" class="form-control"></textarea>
+              <textarea id="text-insert-additional-description" type="text" class="form-control" placeholder="Please add an additional description (if applicable)"></textarea>
             </div>
             
             <div class="input-group input-group-sm mb-3">
@@ -140,8 +139,7 @@
             </div>
 
             <div class="input-group-sm mb-3">
-              <label for="text-insert-additional-description" class="form-label">Additional Description and reason for update:</label>
-              <textarea id="text-update-additional-description" type="text" class="form-control"></textarea>
+              <textarea id="text-update-additional-description" type="text" class="form-control" placeholder="Please add an additional description and reason for update (if applicable)"></textarea>
             </div>
             
             <div class="input-group input-group-sm mb-3">

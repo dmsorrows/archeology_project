@@ -46,6 +46,7 @@ function webapp_02() {
     buttonInsertCancel.addEventListener("click", insertArtifactCancel);
 
     //Functions
+    //For Searching Artifact Catalog
 
     function searchArtifacts() {
 
@@ -75,6 +76,16 @@ function webapp_02() {
             }
         };
     };
+
+    //From Validation
+    // function validateInsertForm() {
+    //     var selectPeriodValue = document.forms["insertForm"]["selectPeriod"].value;
+
+    //     if (selectPeriodValue == "0") {
+    //       alert("Please Fill In All Required Fields");
+    //       return false;
+    //     }
+    //   }
 
     //For the Inserting Selects
 
@@ -761,6 +772,7 @@ function webapp_02() {
     getLevel2NamesForUpdate();
     getLevel3NamesForUpdate();
     getLevel4NamesForUpdate();
+
 }
 
 webapp_02();

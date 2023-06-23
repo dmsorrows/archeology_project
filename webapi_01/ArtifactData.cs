@@ -35,7 +35,7 @@ namespace webapi_01
         {
         }
         //For inserting
-        public ArtifactData(string periodName, int level1Id, int level2Id, int level3Id, int level4Id, string additionalDescription, int artifactCount, decimal artifactWeight, string labTechInitials, int provenienceId)
+        public ArtifactData(string periodName, int level1Id, int level2Id, int level3Id, int? level4Id, string? additionalDescription, int artifactCount, decimal artifactWeight, string labTechInitials, int provenienceId)
         {
             PeriodName = periodName;
             Level1Id = level1Id;
@@ -50,7 +50,7 @@ namespace webapi_01
             ProvenienceId = provenienceId;
         }
         //For updating
-        public ArtifactData(int artifactId, string periodName, int level1Id, int level2Id, int level3Id, int level4Id, string additionalDescription, int artifactCount, decimal artifactWeight, string labTechInitials, int provenienceId)
+        public ArtifactData(int artifactId, string periodName, int level1Id, int level2Id, int level3Id, int? level4Id, string? additionalDescription, int artifactCount, decimal artifactWeight, string labTechInitials, int provenienceId)
         {
             ArtifactId = artifactId;
             PeriodName = periodName;
@@ -66,7 +66,7 @@ namespace webapi_01
             ProvenienceId = provenienceId;
         }
         //For searching
-        public ArtifactData(int artifactId, string projectNumber, string siteNumber, string accessionNumber, int fieldSerialNumber, int unitNumber, string depth, DateTime? excavationDate, string periodName, int level1Id, string level1Name, int level2Id, string level2Name, int level3Id, string level3Name, int? level4Id, string? level4Name, string additionalDescription, int artifactCount, decimal artifactWeight, string labTechInitials, DateTime dateAnalyzed, int provenienceId)
+        public ArtifactData(int artifactId, string projectNumber, string siteNumber, string accessionNumber, int fieldSerialNumber, int unitNumber, string depth, DateTime? excavationDate, string periodName, int level1Id, string level1Name, int level2Id, string level2Name, int level3Id, string level3Name, int? level4Id, string? level4Name, string? additionalDescription, int artifactCount, decimal artifactWeight, string labTechInitials, DateTime dateAnalyzed, int provenienceId)
         {
             ArtifactId = artifactId;
             ProjectNumber = projectNumber;
@@ -129,7 +129,7 @@ namespace webapi_01
         {
             List<ArtifactData> artifacts = new List<ArtifactData>();
 
-            string sql = "SELECT a.ArtifactId, p.ProjectNumber, p.SiteNumber, p.AccessionNumber, p.FieldSerialNumber, p.UnitNumber, p.Depth, p.ExcavationDate, aa.PeriodName, l1.Level1Id, l1.Level1Name, l2.Level2Id, l2.Level2Name, l3.Level3Id, l3.Level3Name, l4.Level4Id, l4.Level4Name, aa.AdditionalDescription, aa.ArtifactCount, aa.ArtifactWeight, aa.LabTechInitials, aa.DateAnalyzed, p.ProvenienceId, a.[Count] FROM (SELECT ArtifactId, count(*) over () AS [Count] FROM ArtifactData WHERE PeriodName LIKE '%' + @Search + '%' or AdditionalDescription LIKE '%' + @Search + '%' ORDER BY ArtifactId offset @PageSize * (@PageNumber - 1) rows fetch next @PageSize rows only) AS a INNER JOIN ArtifactData AS aa ON aa.ArtifactId = a.ArtifactId INNER JOIN Provenience AS p ON aa.ProvenienceId = p.ProvenienceId INNER JOIN Level1 AS l1 ON aa.Level1Id = l1.Level1Id INNER JOIN Level2 AS l2 ON aa.Level2Id = l2.Level2Id INNER JOIN Level3 AS l3 ON aa.Level3Id = l3.Level3Id LEFT OUTER JOIN Level4 AS l4 ON aa.Level4Id = l4.Level4Id ORDER BY p.FieldSerialNumber, aa.PeriodName, l1.Level1Name, l2.Level2Name, l3.Level3Name, l4.Level4Name;";
+            string sql = "SELECT a.ArtifactId, p.ProjectNumber, p.SiteNumber, p.AccessionNumber, p.FieldSerialNumber, p.UnitNumber, p.Depth, p.ExcavationDate, aa.PeriodName, l1.Level1Id, l1.Level1Name, l2.Level2Id, l2.Level2Name, l3.Level3Id, l3.Level3Name, l4.Level4Id, l4.Level4Name, aa.AdditionalDescription, aa.ArtifactCount, aa.ArtifactWeight, aa.LabTechInitials, aa.DateAnalyzed, p.ProvenienceId, a.[Count] FROM (SELECT ArtifactId, count(*) over () AS [Count] FROM ArtifactData WHERE PeriodName LIKE '%' + @Search + '%' or AdditionalDescription LIKE '%' + @Search + '%' ORDER BY ArtifactId offset @PageSize * (@PageNumber - 1) rows fetch next @PageSize rows only) AS a LEFT OUTER JOIN ArtifactData AS aa ON aa.ArtifactId = a.ArtifactId INNER JOIN Provenience AS p ON aa.ProvenienceId = p.ProvenienceId INNER JOIN Level1 AS l1 ON aa.Level1Id = l1.Level1Id INNER JOIN Level2 AS l2 ON aa.Level2Id = l2.Level2Id INNER JOIN Level3 AS l3 ON aa.Level3Id = l3.Level3Id LEFT OUTER JOIN Level4 AS l4 ON aa.Level4Id = l4.Level4Id ORDER BY p.FieldSerialNumber, aa.PeriodName, l1.Level1Name, l2.Level2Name, l3.Level3Name, l4.Level4Name;";
             // string sql = "select p.ArtifactId, a.PeriodName, a.Level1Id, a.Level2Id, a.Level3Id, a.Level4Id, a.AdditionalDescription, a.ArtifactCount, a.ArtifactWeight, a.LabTechInitials, a.DateAnalyzed, a.ProvenienceId, p.[Count] from (select ArtifactId, count(*) over () AS [Count] from ArtifactData where PeriodName like '%' + @Search + '%' or AdditionalDescription like '%' + @Search + '%' order by ArtifactId offset @PageSize * (@PageNumber - 1) rows fetch next @PageSize rows only) p join ArtifactData a on p.ArtifactId = a.ArtifactId order by 1;";
 
             SqlCommand sqlCommand = new SqlCommand(sql, sqlConnection);
@@ -170,11 +170,11 @@ namespace webapi_01
                 artifact.Level3Name = sqlDataReader["Level3Name"].ToString();
                 artifact.Level4Id = Convert.ToInt32(sqlDataReader["Level4Id"].ToString() == "" ? "0" : sqlDataReader["Level4Id"].ToString()); 
                 artifact.Level4Name = sqlDataReader["Level4Name"].ToString() == "" ? "" : sqlDataReader["Level4Name"].ToString();
-                artifact.AdditionalDescription = sqlDataReader["AdditionalDescription"].ToString();
+                artifact.AdditionalDescription = sqlDataReader["AdditionalDescription"].ToString() == null ? "" : sqlDataReader["AdditionalDescription"].ToString();
                 artifact.ArtifactCount = Convert.ToInt32(sqlDataReader["ArtifactCount"].ToString());
                 artifact.ArtifactWeight = Convert.ToDecimal(sqlDataReader["ArtifactWeight"].ToString());
                 artifact.LabTechInitials = sqlDataReader["LabTechInitials"].ToString();
-                artifact.DateAnalyzed = Convert.ToDateTime(sqlDataReader["DateAnalyzed"].ToString() == "" ? DateTime.Now : sqlDataReader["DateAnalyzed"].ToString()); 
+                artifact.DateAnalyzed = Convert.ToDateTime(sqlDataReader["DateAnalyzed"].ToString()); 
                 artifact.ProvenienceId = Convert.ToInt32(sqlDataReader["ProvenienceId"].ToString());
 
                 artifacts.Add(artifact);
@@ -196,7 +196,9 @@ namespace webapi_01
             SqlParameter paramLevel2Id = new SqlParameter("@Level2Id", artifact.Level2Id);
             SqlParameter paramLevel3Id = new SqlParameter("@Level3Id", artifact.Level3Id);
             SqlParameter paramLevel4Id = new SqlParameter("@Level4Id", artifact.Level4Id);
+                if (artifact.Level4Id == 0) {paramLevel4Id.Value = DBNull.Value;}
             SqlParameter paramAdditionalDescription = new SqlParameter("@AdditionalDescription", artifact.AdditionalDescription);
+                if (artifact.AdditionalDescription == null) {paramAdditionalDescription.Value = DBNull.Value;}
             SqlParameter paramArtifactCount = new SqlParameter("@ArtifactCount", artifact.ArtifactCount);
             SqlParameter paramArtifactWeight = new SqlParameter("@ArtifactWeight", artifact.ArtifactWeight);
             SqlParameter paramLabTechInitials = new SqlParameter("@LabTechInitials", artifact.LabTechInitials);
@@ -244,7 +246,9 @@ namespace webapi_01
             SqlParameter paramLevel2Id = new SqlParameter("@Level2Id", artifact.Level2Id);
             SqlParameter paramLevel3Id = new SqlParameter("@Level3Id", artifact.Level3Id);
             SqlParameter paramLevel4Id = new SqlParameter("@Level4Id", artifact.Level4Id);
+                if (artifact.Level4Id == 0) {paramLevel4Id.Value = DBNull.Value;}
             SqlParameter paramAdditionalDescription = new SqlParameter("@AdditionalDescription", artifact.AdditionalDescription);
+                if (artifact.AdditionalDescription == null) {paramAdditionalDescription.Value = DBNull.Value;}
             SqlParameter paramArtifactCount = new SqlParameter("@ArtifactCount", artifact.ArtifactCount);
             SqlParameter paramArtifactWeight = new SqlParameter("@ArtifactWeight", artifact.ArtifactWeight);
             SqlParameter paramLabTechInitials = new SqlParameter("@LabTechInitials", artifact.LabTechInitials);

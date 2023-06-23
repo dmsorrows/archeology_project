@@ -20,7 +20,7 @@ CREATE TABLE ArtifactData (
   Level2Id INTEGER NOT NULL,
   Level3Id INTEGER NOT NULL,
   Level4Id INTEGER,
-  AdditionalDescription VARCHAR(1000) NOT NULL,
+  AdditionalDescription VARCHAR(1000),
   ArtifactCount INTEGER NOT NULL,
   ArtifactWeight DECIMAL (8,3) NOT NULL, 
   LabTechInitials VARCHAR(3) NOT NULL,
