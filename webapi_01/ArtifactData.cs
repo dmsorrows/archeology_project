@@ -186,7 +186,7 @@ namespace webapi_01
 
         public static int InsertArtifact(ArtifactData artifact, SqlConnection sqlConnection)
         {
-            string sql = "insert into ArtifactData (PeriodName, Level1Id, Level2Id, Level3Id, Level4Id, AdditionalDescription, ArtifactCount, ArtifactWeight, LabTechInitials, DateAnalyzed, ProvenienceId) values (@PeriodName, @Level1Id, @Level2Id, @Level3Id, @Level4Id, @AdditionalDescription, @ArtifactCount, @ArtifactWeight, @LabTechInitials, @DateAnalyzed, @ProvenienceId);";
+            string sql = "INSERT INTO ArtifactData (PeriodName, Level1Id, Level2Id, Level3Id, Level4Id, AdditionalDescription, ArtifactCount, ArtifactWeight, LabTechInitials, DateAnalyzed, ProvenienceId) VALUES (@PeriodName, @Level1Id, @Level2Id, @Level3Id, @Level4Id, @AdditionalDescription, @ArtifactCount, @ArtifactWeight, @LabTechInitials, @DateAnalyzed, @ProvenienceId);";
 
             SqlCommand sqlCommand = new SqlCommand(sql, sqlConnection);
             sqlCommand.CommandType = System.Data.CommandType.Text;

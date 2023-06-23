@@ -3,7 +3,6 @@ body {
     ;
 }
 
-
 .my-header,
 .my-footer {
     background-color: #EDE7DC;
@@ -11,28 +10,33 @@ body {
     color: rgb(255, 255, 255);
 }
 
-.col-artifact-table {
-    background-color: white;
-    padding-top: 20px;
-}
-
 h4 {
     text-align: center;
 }
 
+#form-update,
 #form-insert {
     background-color: #DCD2CC;
-    border: 2px solid rgb(0, 0, 0);
-}
-
-#form-update {
-    background-color: #DCD2CC;
-    border: 2px solid rgb(0, 0, 0);
+    padding: 23px 0px;
+    border: 5px solid black;
+    border-radius: 20px;
 }
 
 #form-search {
     background-color: #BDC3CB;
-    border: 2px solid rgb(0, 0, 0);
+    padding: 23px 0px;
+    border: 5px solid black;
+    border-radius: 20px;
+}
+
+#search-box {
+    margin-left: auto; 
+    margin-right: 0;
+}
+
+.insert-update-buttons {
+    margin-left: auto; 
+    margin-right: 0;
 }
 
 .button-column {
