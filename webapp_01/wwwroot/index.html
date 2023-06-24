@@ -39,8 +39,8 @@
 
         <!-- For Inserting -->
         <div id="form-insert" class="col d-grid gap-1">
-          <h4 class="mb-1">Insert Catalog Entry</h4>
-          <form name="insertForm" class="row align-items-start ms-3 me-1" onsubmit="return validateInsertForm()">
+          <h4 id="insert-header" class="mb-1 form-headers">Insert Catalog Entry</h4>
+          <form name="insertForm" class="row align-items-start ms-3 me-1">
 
             <div class="row p-1">
               <div class="col">
@@ -92,12 +92,9 @@
               </div>
             </div>
 
-            <div class="row p-1 insert-update-buttons">
+            <div class="row p-1 justify-content-end">
               <div class="col-auto">
                 <button id="button-insert" type="button" class="btn btn-primary">Insert Artifact(s)</button>
-              </div>
-
-              <div class="col-auto">
                 <button id="button-insert-cancel" type="button" class="btn btn-primary">Cancel</button>
               </div>
             </div>
@@ -109,7 +106,7 @@
         <div id="form-update" class="col d-grid gap-1">
           <form class="row align-items-start ms-3 me-1">
 
-            <div class="row p-1">
+            <div class="row p-1 form-headers">
               <h4 class="col">Update Catalog Entry by:</h4>
               <div class="col mb-2 input-group input-group-sm">
                 <span class="input-group-text" id="inputGroup-sizing-sm">Artifact Id:</span>
@@ -167,12 +164,9 @@
               </div>
             </div>
 
-            <div class="row p-1 insert-update-buttons">
+            <div class="row p-1 justify-content-end">
               <div class="col-auto">
                 <button id="button-update" type="button" class="btn btn-primary">Update Artifact(s)</button>
-              </div>
-
-              <div class="col-auto">
                 <button id="button-update-cancel" type="button" class="btn btn-primary">Cancel</button>
               </div>
             </div>
@@ -184,29 +178,26 @@
 
     <!-- For Searching -->
 
-    <div class="container d-grid gap-1" id="form-search">
-          <h4>Search by Time Period or Additional Description</h4>
+    <div class="container d-grid gap-1" id="form-search"> 
+      <form class="row p-1 justify-content-end form-headers">
 
-          <form class="row p-1" id="search-box">
-              <div class="col-auto">
-                  <input id="text-search" type="text" class="form-control">
-              </div>
-              <div class="col-auto">
-                  <button id="button-search" type="button" class="btn btn-primary">Search</button>
-              </div>
-              <div class="col-auto">
-                  <button id="button-search-clear" type="button" class="btn btn-primary">Clear</button>
-              </div>
-          </form>
-
-        <div class="row p-1">
-          <div id="artifact-table"></div>
+        <div class="col-auto">
+          <h4>Search by Time Period or Additional Description:</h4>
         </div>
+        <div class="col-4">
+          <input id="text-search" type="text" class="form-control">
+        </div>
+        <div class="col-auto">
+          <button id="button-search" type="button" class="btn btn-primary">Search</button>
+          <button id="button-search-clear" type="button" class="btn btn-primary">Clear</button>
+        </div>
+        
+      </form>
+      
+        <div class="row p-1" id="artifact-table"></div>
 
-      </div>
     </div>
-  </div>
-
+ 
     <div class="col my-footer">
       <div class="col col-12">
           Footer

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "2OkkGK/Q7x7Ay4CGmd3A8h5gYgDaz3AZEJmkP01thrw=",
+  "Hash": "hG2IcqzaQ2hZRj5xRP12x3EzRdb2NHVRQcBMHg/5EJM=",
   "Source": "artifact_database",
   "BasePath": "_content/artifact_database",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "artifact_database\\wwwroot",
       "Source": "artifact_database",
-      "ContentRoot": "C:\\Users\\Sorrows\\Documents\\repos\\archeology_project\\webapp_01\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dmsor\\Documents\\code\\archeology_project\\webapp_01\\wwwroot\\",
       "BasePath": "_content/artifact_database",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\Sorrows\\Documents\\repos\\archeology_project\\webapp_01\\wwwroot\\favicon.ico",
+      "Identity": "C:\\Users\\dmsor\\Documents\\code\\archeology_project\\webapp_01\\wwwroot\\favicon.ico",
       "SourceId": "artifact_database",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sorrows\\Documents\\repos\\archeology_project\\webapp_01\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dmsor\\Documents\\code\\archeology_project\\webapp_01\\wwwroot\\",
       "BasePath": "_content/artifact_database",
       "RelativePath": "favicon.ico",
       "AssetKind": "All",
@@ -34,10 +34,10 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "C:\\Users\\Sorrows\\Documents\\repos\\archeology_project\\webapp_01\\wwwroot\\index.css",
+      "Identity": "C:\\Users\\dmsor\\Documents\\code\\archeology_project\\webapp_01\\wwwroot\\index.css",
       "SourceId": "artifact_database",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sorrows\\Documents\\repos\\archeology_project\\webapp_01\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dmsor\\Documents\\code\\archeology_project\\webapp_01\\wwwroot\\",
       "BasePath": "_content/artifact_database",
       "RelativePath": "index.css",
       "AssetKind": "All",
@@ -51,10 +51,10 @@
       "OriginalItemSpec": "wwwroot\\index.css"
     },
     {
-      "Identity": "C:\\Users\\Sorrows\\Documents\\repos\\archeology_project\\webapp_01\\wwwroot\\index.html",
+      "Identity": "C:\\Users\\dmsor\\Documents\\code\\archeology_project\\webapp_01\\wwwroot\\index.html",
       "SourceId": "artifact_database",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sorrows\\Documents\\repos\\archeology_project\\webapp_01\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dmsor\\Documents\\code\\archeology_project\\webapp_01\\wwwroot\\",
       "BasePath": "_content/artifact_database",
       "RelativePath": "index.html",
       "AssetKind": "All",
@@ -68,10 +68,10 @@
       "OriginalItemSpec": "wwwroot\\index.html"
     },
     {
-      "Identity": "C:\\Users\\Sorrows\\Documents\\repos\\archeology_project\\webapp_01\\wwwroot\\index.js",
+      "Identity": "C:\\Users\\dmsor\\Documents\\code\\archeology_project\\webapp_01\\wwwroot\\index.js",
       "SourceId": "artifact_database",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Sorrows\\Documents\\repos\\archeology_project\\webapp_01\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\dmsor\\Documents\\code\\archeology_project\\webapp_01\\wwwroot\\",
       "BasePath": "_content/artifact_database",
       "RelativePath": "index.js",
       "AssetKind": "All",

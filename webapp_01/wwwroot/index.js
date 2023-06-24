@@ -9,7 +9,9 @@ function webapp_02() {
     var selectLevel2 = document.getElementById("select-level2");
     var selectLevel3 = document.getElementById("select-level3");
     var selectLevel4 = document.getElementById("select-level4");
-
+    
+    var formInsert = document.getElementById("form-insert");
+    var requiredInput = document.getElementById("text-insert-artifact-count");
 
     var buttonSearch = document.getElementById("button-search");
     var buttonSearchClear = document.getElementById("button-search-clear");
@@ -35,6 +37,14 @@ function webapp_02() {
 
     buttonSearch.addEventListener("click", searchArtifacts);
     buttonSearchClear.addEventListener("click", searchClear);
+
+    formInsert.addEventListener('submit', (e) => {
+        if (requiredInput.value === '' || requiredInput.value === null) {
+            alert("Fill in Count, Weight, or Initials!")
+        }
+        e.preventDefault()
+    })
+
 
     buttonUpdate.addEventListener("click", updateArtifact);
     buttonUpdateCancel.addEventListener("click", updateArtifactCancel);
@@ -394,7 +404,7 @@ function webapp_02() {
     //For the big dynamic table
 
     function showArtifacts(artifacts) {
-        var artifactTableText = '<table class="table table-striped table-sm"><thead><tr><th scope="col">Artifact Id</th><th scope="col">Project<br>Number</th><th scope="col">Site Number</th><th scope="col">Accession<br>Number</th><th scope="col">FSN</th><th scope="col">Unit</th><th scope="col">Depth<br>(cmbd)</th><th scope="col">Excavation Date</th><th scope="col">Period</th><th scope="col">Level 1</th><th scope="col">Level 2</th><th scope="col">Level 3</th><th scope="col">Level 4</th><th scope="col">Additional Description</th><th scope="col">Artifact<br>Count</th><th scope="col">Weight (g)</th><th scope="col">Analyzer</th><th scope="col">Date Analyzed</th><th></th></tr></thead><tbody>';
+        var artifactTableText = '<table class="table table-striped table-sm table-bordered" id="show-artifacts-innerHTML"><thead><tr><th scope="col">Artifact Id</th><th scope="col">Project<br>Number</th><th scope="col">Site Number</th><th scope="col">Accession<br>Number</th><th scope="col">FSN</th><th scope="col">Unit</th><th scope="col">Depth<br>(cmbd)</th><th scope="col">Excavation Date</th><th scope="col">Period</th><th scope="col">Level 1</th><th scope="col">Level 2</th><th scope="col">Level 3</th><th scope="col">Level 4</th><th scope="col">Additional Description</th><th scope="col">Artifact<br>Count</th><th scope="col">Weight (g)</th><th scope="col">Analyzer</th><th scope="col">Date Analyzed</th><th></th></tr></thead><tbody>';
         //<td><div class='row g-2'><div class='col-auto'><button type='button' data-artifact-id='" + artifact.artifactId = "' class='btn btn-outline-primary btn-sm btn-artifact-table-update'>Update</button></div><div class='col-auto'><button type='button' data-artifact-id='" + artifact.artifactId = "' class='btn btn-outline-primary btn-sm btn-artifact-table-delete'>Delete</button></div></div>
         for (var i = 0; i < artifacts.length; i++) {
             var artifact = artifacts[i];
@@ -427,7 +437,7 @@ function webapp_02() {
 
         for (var i = 0; i < provenienceData.length; i++) {
             var provenience = provenienceData[i];
-            provenienceSelectText = provenienceSelectText + "<option value='" + provenience.provenienceId + "'>" + "Test Unit Number: " + provenience.unitNumber + " at Depth: " + provenience.depth + " cmbd" + "</option>";
+            provenienceSelectText = provenienceSelectText + "<option value='" + provenience.provenienceId + "'>" + "Test Unit: " + provenience.unitNumber + " at Depth: " + provenience.depth + " cmbd" + "</option>";
         }
 
         provenienceSelectText = provenienceSelectText + "</select></div>";
@@ -494,7 +504,7 @@ function webapp_02() {
 
         for (var i = 0; i < provenienceData.length; i++) {
             var provenience = provenienceData[i];
-            provenienceSelectText = provenienceSelectText + "<option value='" + provenience.provenienceId + "'>" + "Test Unit Number: " + provenience.unitNumber + " at Depth: " + provenience.depth + " cmbd" + "</option>";
+            provenienceSelectText = provenienceSelectText + "<option value='" + provenience.provenienceId + "'>" + "Test Unit: " + provenience.unitNumber + " at Depth: " + provenience.depth + " cmbd" + "</option>";
         }
 
         provenienceSelectText = provenienceSelectText + "</select></div>";

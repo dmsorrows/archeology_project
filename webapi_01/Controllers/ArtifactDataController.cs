@@ -158,7 +158,7 @@ public class ArtifactDataController : ControllerBase
 
     static string GetConnectionString()
     {
-        string serverName = @"SORROWS-PC\SQLEXPRESS"; //Change to the "Server Name" you see when you launch SQL Server Management Studio.
+        string serverName = @"PALEO\SQLEXPRESS"; //Change to the "Server Name" you see when you launch SQL Server Management Studio.
         string databaseName = "artifacts_db"; //Change to the database where you created your Employee table.
         string connectionString = $"data source={serverName}; database={databaseName}; Integrated Security=true;";
         return connectionString;

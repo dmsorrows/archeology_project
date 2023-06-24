@@ -8,19 +8,19 @@
     "net7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Sorrows\\.nuget\\packages\\": {}
+    "C:\\Users\\dmsor\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Sorrows\\Documents\\repos\\archeology_project\\webapp_01\\artifact_database.csproj",
+      "projectUniqueName": "C:\\Users\\dmsor\\Documents\\code\\archeology_project\\webapp_01\\artifact_database.csproj",
       "projectName": "artifact_database",
-      "projectPath": "C:\\Users\\Sorrows\\Documents\\repos\\archeology_project\\webapp_01\\artifact_database.csproj",
-      "packagesPath": "C:\\Users\\Sorrows\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Sorrows\\Documents\\repos\\archeology_project\\webapp_01\\obj\\",
+      "projectPath": "C:\\Users\\dmsor\\Documents\\code\\archeology_project\\webapp_01\\artifact_database.csproj",
+      "packagesPath": "C:\\Users\\dmsor\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\dmsor\\Documents\\code\\archeology_project\\webapp_01\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Sorrows\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\dmsor\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -64,7 +64,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\RuntimeIdentifierGraph.json"
       }
     }
   }
