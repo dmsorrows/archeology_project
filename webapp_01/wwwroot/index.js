@@ -613,6 +613,10 @@ function webapp_02() {
             errorString += "\n";
             errorString += "Fill in Count!"
             textArtifactCount.classList.add("error_field");
+        } else if (isNaN(textArtifactCount.value)) {
+            errorString += "\n";
+            errorString += "Only numbers can go into the Count input!"
+            textArtifactCount.classList.add("error_field");
         } else {
             textArtifactCount.classList.remove("error_field");
         }
@@ -620,6 +624,10 @@ function webapp_02() {
         if (textArtifactWeight.value === '' || textArtifactWeight.value === null) {
             errorString += "\n";
             errorString += "Fill in Weight!"
+            textArtifactWeight.classList.add("error_field");
+        } else if (isNaN(textArtifactWeight.value)) {
+            errorString += "\n";
+            errorString += "Only numbers can go into the Weight input!"
             textArtifactWeight.classList.add("error_field");
         } else {
             textArtifactWeight.classList.remove("error_field");
@@ -629,6 +637,14 @@ function webapp_02() {
             errorString += "\n";
             errorString += "Fill in Analyzer Initials!"
             textLabTechInitials.classList.add("error_field");
+        } else if (/[^a-zA-Z]+$/.test(textLabTechInitials.value)) {
+            errorString += "\n";
+            errorString += "Only letters can go into the Analyzer input!"
+            textArtifactWeight.classList.add("error_field");
+        } else if (textLabTechInitials.value.length > 3) {
+            errorString += "\n";
+            errorString += "Too many letters in the Analyzer input!"
+            textArtifactWeight.classList.add("error_field");
         } else {
             textLabTechInitials.classList.remove("error_field");
         }
@@ -737,6 +753,10 @@ function webapp_02() {
         if (textArtifactId.value === '' || textArtifactId.value === null) {
             errorString += "Fill in Artifact Id!"
             textArtifactId.classList.add("error_field");
+        } else if (isNaN(textArtifactId.value)) {
+            errorString += "\n";
+            errorString += "Only numbers can go into the Artifact Id input!"
+            textArtifactId.classList.add("error_field");
         } else {
             textArtifactId.classList.remove("error_field");
         }
@@ -785,6 +805,10 @@ function webapp_02() {
             errorString += "\n";
             errorString += "Fill in Count!"
             textArtifactCount.classList.add("error_field");
+        } else if (isNaN(textArtifactCount.value)) {
+            errorString += "\n";
+            errorString += "Only numbers can go into the Count input!"
+            textArtifactCount.classList.add("error_field");
         } else {
             textArtifactCount.classList.remove("error_field");
         }
@@ -792,6 +816,10 @@ function webapp_02() {
         if (textArtifactWeight.value === '' || textArtifactWeight.value === null) {
             errorString += "\n";
             errorString += "Fill in Weight!"
+            textArtifactWeight.classList.add("error_field");
+        } else if (isNaN(textArtifactWeight.value)) {
+            errorString += "\n";
+            errorString += "Only numbers can go into the Weight input!"
             textArtifactWeight.classList.add("error_field");
         } else {
             textArtifactWeight.classList.remove("error_field");
