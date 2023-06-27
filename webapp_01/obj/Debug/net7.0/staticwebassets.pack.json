@@ -17,6 +17,14 @@
       "PackagePath": "staticwebassets\\index.js"
     },
     {
+      "Id": "C:\\Users\\dmsor\\Documents\\code\\archeology_project\\webapp_01\\wwwroot\\pages\\page.html",
+      "PackagePath": "staticwebassets\\pages\\page.html"
+    },
+    {
+      "Id": "C:\\Users\\dmsor\\Documents\\code\\archeology_project\\webapp_01\\wwwroot\\pages\\research.html",
+      "PackagePath": "staticwebassets\\pages\\research.html"
+    },
+    {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.artifact_database.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

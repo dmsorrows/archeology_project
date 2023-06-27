@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "hG2IcqzaQ2hZRj5xRP12x3EzRdb2NHVRQcBMHg/5EJM=",
+  "Hash": "v0GMDg9S+FIY7uaNnKwlQIj5deIgzOfTLXiHU9AnPP4=",
   "Source": "artifact_database",
   "BasePath": "_content/artifact_database",
   "Mode": "Default",
@@ -83,6 +83,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\index.js"
+    },
+    {
+      "Identity": "C:\\Users\\dmsor\\Documents\\code\\archeology_project\\webapp_01\\wwwroot\\pages\\page.html",
+      "SourceId": "artifact_database",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\dmsor\\Documents\\code\\archeology_project\\webapp_01\\wwwroot\\",
+      "BasePath": "_content/artifact_database",
+      "RelativePath": "pages/page.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\pages\\page.html"
+    },
+    {
+      "Identity": "C:\\Users\\dmsor\\Documents\\code\\archeology_project\\webapp_01\\wwwroot\\pages\\research.html",
+      "SourceId": "artifact_database",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\dmsor\\Documents\\code\\archeology_project\\webapp_01\\wwwroot\\",
+      "BasePath": "_content/artifact_database",
+      "RelativePath": "pages/research.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\pages\\research.html"
     }
   ]
 }

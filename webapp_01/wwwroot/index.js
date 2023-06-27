@@ -10,9 +10,6 @@ function webapp_02() {
     var selectLevel3 = document.getElementById("select-level3");
     var selectLevel4 = document.getElementById("select-level4");
     
-    var formInsert = document.getElementById("form-insert");
-    var requiredInput = document.getElementById("text-insert-artifact-count");
-
     var buttonSearch = document.getElementById("button-search");
     var buttonSearchClear = document.getElementById("button-search-clear");
 
@@ -38,12 +35,7 @@ function webapp_02() {
     buttonSearch.addEventListener("click", searchArtifacts);
     buttonSearchClear.addEventListener("click", searchClear);
 
-    formInsert.addEventListener('submit', (e) => {
-        if (requiredInput.value === '' || requiredInput.value === null) {
-            alert("Fill in Count, Weight, or Initials!")
-        }
-        e.preventDefault()
-    })
+   
 
 
     buttonUpdate.addEventListener("click", updateArtifact);
@@ -86,16 +78,6 @@ function webapp_02() {
             }
         };
     };
-
-    //From Validation
-    // function validateInsertForm() {
-    //     var selectPeriodValue = document.forms["insertForm"]["selectPeriod"].value;
-
-    //     if (selectPeriodValue == "0") {
-    //       alert("Please Fill In All Required Fields");
-    //       return false;
-    //     }
-    //   }
 
     //For the Inserting Selects
 
@@ -584,6 +566,78 @@ function webapp_02() {
         var textLabTechInitials = document.getElementById("text-insert-lab-tech-initials");
         var selectProvenienceInnerHTML = document.getElementById("select-provenience-innerHTML");
 
+        //This code block catches errors
+
+        var errorString = "";
+
+        if (selectProvenienceInnerHTML.value === '0' || selectProvenienceInnerHTML.value === null) {
+            errorString += "Select a Provenience!"
+            selectProvenienceInnerHTML.classList.add("error_field");
+        } else {
+            selectProvenienceInnerHTML.classList.remove("error_field");
+        }
+
+        if (selectPeriod.value === '0' || selectPeriod.value === null) {
+            errorString += "\n";
+            errorString += "Select a Time Period!"
+            selectPeriod.classList.add("error_field");
+        } else {
+            selectPeriod.classList.remove("error_field");
+        }
+
+        if (selectLevel1InnerHTML.value === '0' || selectLevel1InnerHTML.value === null) {
+            errorString += "\n";
+            errorString += "Select a Level 1 Name!"
+            selectLevel1InnerHTML.classList.add("error_field");
+        } else {
+            selectLevel1InnerHTML.classList.remove("error_field");
+        }
+
+        if (selectLevel2InnerHTML.value === '0' || selectLevel2InnerHTML.value === null) {
+            errorString += "\n";
+            errorString += "Select a Level 2 Name!"
+            selectLevel2InnerHTML.classList.add("error_field");
+        } else {
+            selectLevel2InnerHTML.classList.remove("error_field");
+        }
+
+        if (selectLevel3InnerHTML.value === '0' || selectLevel3InnerHTML.value === null) {
+            errorString += "\n";
+            errorString += "Select a Level 3 Name!"
+            selectLevel3InnerHTML.classList.add("error_field");
+        } else {
+            selectLevel3InnerHTML.classList.remove("error_field");
+        }
+
+        if (textArtifactCount.value === '' || textArtifactCount.value === null) {
+            errorString += "\n";
+            errorString += "Fill in Count!"
+            textArtifactCount.classList.add("error_field");
+        } else {
+            textArtifactCount.classList.remove("error_field");
+        }
+
+        if (textArtifactWeight.value === '' || textArtifactWeight.value === null) {
+            errorString += "\n";
+            errorString += "Fill in Weight!"
+            textArtifactWeight.classList.add("error_field");
+        } else {
+            textArtifactWeight.classList.remove("error_field");
+        }
+
+        if (textLabTechInitials.value === '' || textLabTechInitials.value === null) {
+            errorString += "\n";
+            errorString += "Fill in Analyzer Initials!"
+            textLabTechInitials.classList.add("error_field");
+        } else {
+            textLabTechInitials.classList.remove("error_field");
+        }
+
+        if (errorString.length != 0 || errorString !== "") {
+            alert(errorString);
+            return;
+        }
+
         var url = 'http://localhost:5008/InsertArtifact?periodName=' + selectPeriod.value + '&level1Id=' + selectLevel1InnerHTML.value + '&level2Id=' + selectLevel2InnerHTML.value + '&level3Id=' + selectLevel3InnerHTML.value + '&level4Id=' + selectLevel4InnerHTML.value + '&additionalDescription=' + textAdditionalDescription.value + '&artifactCount=' + textArtifactCount.value + '&artifactWeight=' + textArtifactWeight.value + '&labTechInitials=' + textLabTechInitials.value + '&provenienceId=' + selectProvenienceInnerHTML.value;
 
         //http://localhost:5008/InsertArtifact?periodName=Post-Contact&level1Id=6&level2Id=6&level3Id=6&level4Id=6&additionalDescription=AnotherTestPost&artifactCount=6&artifactWeight=6.66&labTechInitials=LOL&provenienceId=6
@@ -649,6 +703,15 @@ function webapp_02() {
         textArtifactWeight.value = "";
         textLabTechInitials.value = "";
         selectProvenienceInnerHTML.value = 0;
+        
+        selectProvenienceInnerHTML.classList.remove("error_field");
+        selectPeriod.classList.remove("error_field");
+        selectLevel1InnerHTML.classList.remove("error_field");
+        selectLevel2InnerHTML.classList.remove("error_field");
+        selectLevel3InnerHTML.classList.remove("error_field");
+        textArtifactCount.classList.remove("error_field");
+        textArtifactWeight.classList.remove("error_field");
+        textLabTechInitials.classList.remove("error_field");
 
     }
 
@@ -656,7 +719,7 @@ function webapp_02() {
     function updateArtifact() {
 
         var textArtifactId = document.getElementById("text-update-artifact-id");
-        var selectPeriod = document.getElementById("update-period");
+        var updatePeriod = document.getElementById("update-period");
         var updateSelectLevel1InnerHTML = document.getElementById("update-select-level1-innerHTML");
         var updateSelectLevel2InnerHTML = document.getElementById("update-select-level2-innerHTML");
         var updateSelectLevel3InnerHTML = document.getElementById("update-select-level3-innerHTML");
@@ -666,8 +729,88 @@ function webapp_02() {
         var textArtifactWeight = document.getElementById("text-update-artifact-weight");
         var textLabTechInitials = document.getElementById("text-update-lab-tech-initials");
         var updateSelectProvenienceInnerHTML = document.getElementById("update-select-provenience-innerHTML");
+       
+        //This code block catches errors
+        
+        var errorString = "";
 
-        var url = 'http://localhost:5008/UpdateArtifact?artifactId=' + textArtifactId.value + '&periodName=' + selectPeriod.value + '&level1Id=' + updateSelectLevel1InnerHTML.value + '&level2Id=' + updateSelectLevel2InnerHTML.value + '&level3Id=' + updateSelectLevel3InnerHTML.value + '&level4Id=' + updateSelectLevel4InnerHTML.value + '&additionalDescription=' + textAdditionalDescription.value + '&artifactCount=' + textArtifactCount.value + '&artifactWeight=' + textArtifactWeight.value + '&labTechInitials=' + textLabTechInitials.value + '&provenienceId=' + updateSelectProvenienceInnerHTML.value; 
+        if (textArtifactId.value === '' || textArtifactId.value === null) {
+            errorString += "Fill in Artifact Id!"
+            textArtifactId.classList.add("error_field");
+        } else {
+            textArtifactId.classList.remove("error_field");
+        }
+
+        if (updateSelectProvenienceInnerHTML.value === '0' || updateSelectProvenienceInnerHTML.value === null) {
+            errorString += "\n";
+            errorString += "Select a Provenience!"
+            updateSelectProvenienceInnerHTML.classList.add("error_field");
+        } else {
+            updateSelectProvenienceInnerHTML.classList.remove("error_field");
+        }
+
+        if (updatePeriod.value === '0' || updatePeriod.value === null) {
+            errorString += "\n";
+            errorString += "Select a Time Period!"
+            updatePeriod.classList.add("error_field");
+        } else {
+            updatePeriod.classList.remove("error_field");
+        }
+
+        if (updateSelectLevel1InnerHTML.value === '0' || updateSelectLevel1InnerHTML.value === null) {
+            errorString += "\n";
+            errorString += "Select a Level 1 Name!"
+            updateSelectLevel1InnerHTML.classList.add("error_field");
+        } else {
+            updateSelectLevel1InnerHTML.classList.remove("error_field");
+        }
+
+        if (updateSelectLevel2InnerHTML.value === '0' || updateSelectLevel2InnerHTML.value === null) {
+            errorString += "\n";
+            errorString += "Select a Level 2 Name!"
+            updateSelectLevel2InnerHTML.classList.add("error_field");
+        } else {
+            updateSelectLevel2InnerHTML.classList.remove("error_field");
+        }
+
+        if (updateSelectLevel3InnerHTML.value === '0' || updateSelectLevel3InnerHTML.value === null) {
+            errorString += "\n";
+            errorString += "Select a Level 3 Name!"
+            updateSelectLevel3InnerHTML.classList.add("error_field");
+        } else {
+            updateSelectLevel3InnerHTML.classList.remove("error_field");
+        }
+
+        if (textArtifactCount.value === '' || textArtifactCount.value === null) {
+            errorString += "\n";
+            errorString += "Fill in Count!"
+            textArtifactCount.classList.add("error_field");
+        } else {
+            textArtifactCount.classList.remove("error_field");
+        }
+
+        if (textArtifactWeight.value === '' || textArtifactWeight.value === null) {
+            errorString += "\n";
+            errorString += "Fill in Weight!"
+            textArtifactWeight.classList.add("error_field");
+        } else {
+            textArtifactWeight.classList.remove("error_field");
+        }
+
+        if (textLabTechInitials.value === '' || textLabTechInitials.value === null) {
+            errorString += "\n";
+            errorString += "Fill in Analyzer Initials!"
+            textLabTechInitials.classList.add("error_field");
+        } else {
+            textLabTechInitials.classList.remove("error_field");
+        }
+
+        if (errorString.length != 0 || errorString !== "") {
+            alert(errorString);
+            return;
+        }
+
+        var url = 'http://localhost:5008/UpdateArtifact?artifactId=' + textArtifactId.value + '&periodName=' + updatePeriod.value + '&level1Id=' + updateSelectLevel1InnerHTML.value + '&level2Id=' + updateSelectLevel2InnerHTML.value + '&level3Id=' + updateSelectLevel3InnerHTML.value + '&level4Id=' + updateSelectLevel4InnerHTML.value + '&additionalDescription=' + textAdditionalDescription.value + '&artifactCount=' + textArtifactCount.value + '&artifactWeight=' + textArtifactWeight.value + '&labTechInitials=' + textLabTechInitials.value + '&provenienceId=' + updateSelectProvenienceInnerHTML.value; 
 
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = doAfterUpdateArtifact;
@@ -694,7 +837,7 @@ function webapp_02() {
         };
 
         textArtifactId.value = "";
-        selectPeriod.value = 0;
+        updatePeriod.value = 0;
         updateSelectLevel1InnerHTML.value = 0;
         updateSelectLevel2InnerHTML.value = 0;
         updateSelectLevel3InnerHTML.value = 0;
@@ -710,7 +853,7 @@ function webapp_02() {
     function updateArtifactCancel() {
 
         var textArtifactId = document.getElementById("text-update-artifact-id");
-        var selectPeriod = document.getElementById("update-period");
+        var updatePeriod = document.getElementById("update-period");
         var updateSelectLevel1InnerHTML = document.getElementById("update-select-level1-innerHTML");
         var updateSelectLevel2InnerHTML = document.getElementById("update-select-level2-innerHTML");
         var updateSelectLevel3InnerHTML = document.getElementById("update-select-level3-innerHTML");
@@ -722,7 +865,7 @@ function webapp_02() {
         var updateSelectProvenienceInnerHTML = document.getElementById("update-select-provenience-innerHTML");
 
         textArtifactId.value = "";
-        selectPeriod.value = 0;
+        updatePeriod.value = 0;
         updateSelectLevel1InnerHTML.value = 0;
         updateSelectLevel2InnerHTML.value = 0;
         updateSelectLevel3InnerHTML.value = 0;
@@ -732,6 +875,16 @@ function webapp_02() {
         textArtifactWeight.value = "";
         textLabTechInitials.value = "";
         updateSelectProvenienceInnerHTML.value = 0;
+
+        textArtifactId.classList.remove("error_field");
+        updateSelectProvenienceInnerHTML.classList.remove("error_field");
+        updatePeriod.classList.remove("error_field");
+        updateSelectLevel1InnerHTML.classList.remove("error_field");
+        updateSelectLevel2InnerHTML.classList.remove("error_field");
+        updateSelectLevel3InnerHTML.classList.remove("error_field");
+        textArtifactCount.classList.remove("error_field");
+        textArtifactWeight.classList.remove("error_field");
+        textLabTechInitials.classList.remove("error_field");
 
     }
 
