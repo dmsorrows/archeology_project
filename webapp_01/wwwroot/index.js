@@ -24,8 +24,9 @@ function webapp_02() {
     var buttonUpdate = document.getElementById("button-update");
     var buttonUpdateCancel = document.getElementById("button-update-cancel");
 
-    // var buttonDelete = document.getElementById("button-delete");
-    // var buttonDeleteCancel = document.getElementById("button-delete-cancel");
+    var buttonPagePrev = document.getElementById("button-page-prev");
+    var textPage = document.getElementById("text-page");
+    var buttonPageNext = document.getElementById("button-page-next");
 
     var buttonInsert = document.getElementById("button-insert");
     var buttonInsertCancel = document.getElementById("button-insert-cancel");
@@ -35,14 +36,11 @@ function webapp_02() {
     buttonSearch.addEventListener("click", searchArtifacts);
     buttonSearchClear.addEventListener("click", searchClear);
 
-   
-
-
     buttonUpdate.addEventListener("click", updateArtifact);
     buttonUpdateCancel.addEventListener("click", updateArtifactCancel);
 
-    // buttonDelete.addEventListener("click", deleteEmployee);
-    // buttonDeleteCancel.addEventListener("click", deleteEmployeeCancel);
+    buttonPagePrev.addEventListener("click", handleButtonPagePrevClick);
+    buttonPageNext.addEventListener("click", handleButtonPageNextClick);
 
     buttonInsert.addEventListener("click", insertArtifact);
     buttonInsertCancel.addEventListener("click", insertArtifactCancel);
@@ -52,7 +50,7 @@ function webapp_02() {
 
     function searchArtifacts() {
 
-        var url = 'http://localhost:5008/SearchArtifacts?search=' + textSearch.value;
+        var url = 'http://localhost:5008/SearchArtifacts?search=' + textSearch.value + "&pageNumber=" + textPage.value;
 
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = doAfterSearchArtifacts;
@@ -78,6 +76,18 @@ function webapp_02() {
             }
         };
     };
+
+    function handleButtonPagePrevClick(e) {
+        if (Number(textPage.value) > 1) {
+            textPage.value = Number(textPage.value) - 1;
+            searchArtifacts();
+        }
+    }
+
+    function handleButtonPageNextClick(e) {
+        textPage.value = Number(textPage.value) + 1;
+        searchArtifacts();
+    }
 
     //For the Inserting Selects
 

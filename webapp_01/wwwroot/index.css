@@ -26,7 +26,7 @@ hr {
     overflow-x: hidden;
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
     background-color: #252930;
-    border-right: 1px solid #eee;
+    border-right: 10px solid #eee;
     width: 12%;
     margin-right: 5%;
 }
@@ -65,7 +65,20 @@ hr {
     text-decoration: none;
 }
 
+.btn-primary {
+  border-color: #252930;;
+  background-color: #252930;
+}
 
+.btn-primary:hover {
+  color: #252930;
+  border-color: #E3E6E0;;
+  background-color: #E3E6E0;
+}
+
+#logo-img {
+  width: 100%;
+}
 
 #research-sidebar {
     top: 40px;
@@ -98,6 +111,10 @@ hr {
     padding: 1% 1%;
     border: 5px solid black;
     border-radius: 10px;
+}
+
+#text-page-div {
+    width: 70px !important;
 }
 
 #show-artifacts-innerHTML {
