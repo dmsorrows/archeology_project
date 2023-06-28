@@ -640,11 +640,11 @@ function webapp_02() {
         } else if (/[^a-zA-Z]+$/.test(textLabTechInitials.value)) {
             errorString += "\n";
             errorString += "Only letters can go into the Analyzer input!"
-            textArtifactWeight.classList.add("error_field");
-        } else if (textLabTechInitials.value.length > 3) {
+            textLabTechInitials.classList.add("error_field");
+        } else if (textLabTechInitials.value.length != 3) {
             errorString += "\n";
-            errorString += "Too many letters in the Analyzer input!"
-            textArtifactWeight.classList.add("error_field");
+            errorString += "Analyzer initials input must only contain initials for a first, middle, and last name!"
+            textLabTechInitials.classList.add("error_field");
         } else {
             textLabTechInitials.classList.remove("error_field");
         }
@@ -829,9 +829,18 @@ function webapp_02() {
             errorString += "\n";
             errorString += "Fill in Analyzer Initials!"
             textLabTechInitials.classList.add("error_field");
+        } else if (/[^a-zA-Z]+$/.test(textLabTechInitials.value)) {
+            errorString += "\n";
+            errorString += "Only letters can go into the Analyzer input!"
+            textLabTechInitials.classList.add("error_field");
+        } else if (textLabTechInitials.value.length != 3) {
+            errorString += "\n";
+            errorString += "Analyzer initials input must only contain initials for a first, middle, and last name!"
+            textLabTechInitials.classList.add("error_field");
         } else {
             textLabTechInitials.classList.remove("error_field");
         }
+
 
         if (errorString.length != 0 || errorString !== "") {
             alert(errorString);
