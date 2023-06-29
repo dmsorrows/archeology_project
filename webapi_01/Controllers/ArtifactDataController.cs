@@ -7,13 +7,7 @@ namespace webapi_01.Controllers;
 [Route("[controller]")]
 public class ArtifactDataController : ControllerBase
 {
-    private readonly ILogger<WeatherForecastController> _logger;
-
-    public ArtifactDataController(ILogger<WeatherForecastController> logger)
-    {
-        _logger = logger;
-    }
-
+    
     [HttpGet]
     [Route("/SearchArtifacts")]
     public Response SearchArtifacts(string pageSize = "10", string pageNumber = "1", string search = "")

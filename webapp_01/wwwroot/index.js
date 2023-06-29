@@ -1,6 +1,6 @@
 function webapp_02() {
 
-    //Get elements
+//Get elements
 
     var textSearch = document.getElementById("text-search");
 
@@ -31,7 +31,7 @@ function webapp_02() {
     var buttonInsert = document.getElementById("button-insert");
     var buttonInsertCancel = document.getElementById("button-insert-cancel");
 
-    //Add event listeners
+//Add event listeners
 
     buttonSearch.addEventListener("click", searchArtifacts);
     buttonSearchClear.addEventListener("click", searchClear);
@@ -45,8 +45,9 @@ function webapp_02() {
     buttonInsert.addEventListener("click", insertArtifact);
     buttonInsertCancel.addEventListener("click", insertArtifactCancel);
 
-    //Functions
-    //For Searching Artifact Catalog
+//Functions
+
+//For Searching Artifact Catalog
 
     function searchArtifacts() {
 
@@ -89,7 +90,7 @@ function webapp_02() {
         searchArtifacts();
     }
 
-    //For the Inserting Selects
+//Associated with dynamic selects - Insert Form begin
 
     function getProvenienceData() {
 
@@ -241,7 +242,9 @@ function webapp_02() {
         }
     }
 
-    //For the Updating Selects
+//Associated with dynamic selects - Insert Form end
+
+//Associated with dynamic selects - Update Form begin
 
     function getProvenienceDataForUpdate() {
 
@@ -393,22 +396,26 @@ function webapp_02() {
         }
     }
 
-    //For the big dynamic table
+//Associated with dynamic selects - Update Form end
+
+//Function for dynamic artifact catalog table begin
 
     function showArtifacts(artifacts) {
         var artifactTableText = '<table class="table table-striped table-sm table-bordered table-hover table-responsive" id="show-artifacts-innerHTML"><thead class="table-dark"><tr><th scope="col">Artifact Id</th><th scope="col">Project<br>Number</th><th scope="col">Site Number</th><th scope="col">Accession<br>Number</th><th scope="col">FSN</th><th scope="col">Unit</th><th scope="col">Depth<br>(cmbd)</th><th scope="col">Excavation Date</th><th scope="col">Period</th><th scope="col">Level 1</th><th scope="col">Level 2</th><th scope="col">Level 3</th><th scope="col">Level 4</th><th scope="col">Additional Description</th><th scope="col">Artifact<br>Count</th><th scope="col">Weight (g)</th><th scope="col">Analyzer</th><th scope="col">Date Analyzed</th><th></th></tr></thead><tbody>';
-        //<td><div class='row g-2'><div class='col-auto'><button type='button' data-artifact-id='" + artifact.artifactId = "' class='btn btn-outline-primary btn-sm btn-artifact-table-update'>Update</button></div><div class='col-auto'><button type='button' data-artifact-id='" + artifact.artifactId = "' class='btn btn-outline-primary btn-sm btn-artifact-table-delete'>Delete</button></div></div>
         for (var i = 0; i < artifacts.length; i++) {
             var artifact = artifacts[i];
 
-            artifactTableText = artifactTableText + '<tr><th scope="row">' + artifact.artifactId + '</th><td>' + artifact.projectNumber + '</td><td>' + artifact.siteNumber + '</td><td>' + artifact.accessionNumber + '</td><td>' + artifact.fieldSerialNumber + '</td><td>' + artifact.unitNumber + '</td><td>' + artifact.depth + '</td><td>' + artifact.excavationDate.split('T')[0] + '</td><td>' + artifact.periodName + '</td><td>' + artifact.level1Name + '</td><td>' + artifact.level2Name + '</td><td>' + artifact.level3Name + '</td><td>' + artifact.level4Name + '</td><td>' + artifact.additionalDescription + '</td><td>' + artifact.artifactCount + '</td><td>' + artifact.artifactWeight + '</td><td>' + artifact.labTechInitials + '</td><td>' + artifact.dateAnalyzed.split('T')[0] + '</td><td><div class="row g-2"><div class="col-auto"><button type="button" data-artifact-id="' + artifact.artifactId + '" class="btn btn-outline-primary btn-sm btn-artifact-table-delete">Delete</button></div></div></td></tr>';
+            artifactTableText = artifactTableText + '<tr><th scope="row">' + artifact.artifactId + '</th><td>' + artifact.projectNumber + '</td><td>' + artifact.siteNumber + '</td><td>' + artifact.accessionNumber + '</td><td>' + artifact.fieldSerialNumber + '</td><td>' + artifact.unitNumber + '</td><td>' + artifact.depth + '</td><td>' + artifact.excavationDate.split('T')[0] + '</td><td>' + artifact.periodName + '</td><td>' + artifact.level1Name + '</td><td>' + artifact.level2Name + '</td><td>' + artifact.level3Name + '</td><td>' + artifact.level4Name + '</td><td>' + artifact.additionalDescription + '</td><td>' + artifact.artifactCount + '</td><td>' + artifact.artifactWeight + '</td><td>' + artifact.labTechInitials + '</td><td>' + artifact.dateAnalyzed.split('T')[0] + '</td><td><div class="row g-2"><div class="col-auto"><button type="button" data-artifact-id="' + artifact.artifactId + '" class="btn btn-outline-danger btn-sm btn-artifact-table-delete">Delete</button></div></div></td></tr>';
         }
 
         artifactTableText = artifactTableText + '</tbody></table>';
 
         artifactTable.innerHTML = artifactTableText;
 
-        //For Deleting on the row
+//Function for dynamic artifact catalog table end
+
+//Associated with Deleting on the dynamic row
+
         var deleteButtons = document.getElementsByClassName("btn-artifact-table-delete");
 
         for (var i = 0; i < deleteButtons.length; i++) {
@@ -422,7 +429,7 @@ function webapp_02() {
         }
     }
 
-    //For the insert selects
+//Functions for dynamic selects - Insert Form begin
 
     function showProvenienceData(provenienceData) {
         var provenienceSelectText = "<div class='row mb-2'><select id='select-provenience-innerHTML' class='form-select form-select-sm'><option selected='' value='0'>Select a Provenience for the Artifact(s)</option>";
@@ -489,7 +496,9 @@ function webapp_02() {
         selectLevel4.innerHTML = level4NameSelectText;
     }
 
-    //For the update selects
+//Functions for dynamic selects - Insert Form end
+
+//Functions for dynamic selects - Update Form begin
 
     function showProvenienceDataForUpdate(provenienceData) {
         var provenienceSelectText = "<div class='row mb-2'><select id='update-select-provenience-innerHTML' class='form-select form-select-sm'><option selected='' value='0'>Select a Provenience for the Artifact(s)</option>";
@@ -556,12 +565,14 @@ function webapp_02() {
         updateLevel4.innerHTML = level4NameSelectText;
     }
 
+//Functions for dynamic selects - Update Form end
 
     function searchClear() {
         textSearch.value = "";
         searchArtifacts();
     }
 
+//Insert function begin
 
     function insertArtifact() {
 
@@ -576,7 +587,7 @@ function webapp_02() {
         var textLabTechInitials = document.getElementById("text-insert-lab-tech-initials");
         var selectProvenienceInnerHTML = document.getElementById("select-provenience-innerHTML");
 
-        //This code block catches errors
+        //Form validation begin
 
         var errorString = "";
 
@@ -664,10 +675,9 @@ function webapp_02() {
             return;
         }
 
-        var url = 'http://localhost:5008/InsertArtifact?periodName=' + selectPeriod.value + '&level1Id=' + selectLevel1InnerHTML.value + '&level2Id=' + selectLevel2InnerHTML.value + '&level3Id=' + selectLevel3InnerHTML.value + '&level4Id=' + selectLevel4InnerHTML.value + '&additionalDescription=' + textAdditionalDescription.value + '&artifactCount=' + textArtifactCount.value + '&artifactWeight=' + textArtifactWeight.value + '&labTechInitials=' + textLabTechInitials.value + '&provenienceId=' + selectProvenienceInnerHTML.value;
+        //Form validation end
 
-        //http://localhost:5008/InsertArtifact?periodName=Post-Contact&level1Id=6&level2Id=6&level3Id=6&level4Id=6&additionalDescription=AnotherTestPost&artifactCount=6&artifactWeight=6.66&labTechInitials=LOL&provenienceId=6
-        //2023-04-22T10:34:23.666
+        var url = 'http://localhost:5008/InsertArtifact?periodName=' + selectPeriod.value + '&level1Id=' + selectLevel1InnerHTML.value + '&level2Id=' + selectLevel2InnerHTML.value + '&level3Id=' + selectLevel3InnerHTML.value + '&level4Id=' + selectLevel4InnerHTML.value + '&additionalDescription=' + textAdditionalDescription.value + '&artifactCount=' + textArtifactCount.value + '&artifactWeight=' + textArtifactWeight.value + '&labTechInitials=' + textLabTechInitials.value + '&provenienceId=' + selectProvenienceInnerHTML.value;
 
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = doAfterInsertArtifact;
@@ -741,7 +751,9 @@ function webapp_02() {
 
     }
 
-    // //Update functions go here.
+//Insert function end
+//Update function begin
+
     function updateArtifact() {
 
         var textArtifactId = document.getElementById("text-update-artifact-id");
@@ -756,7 +768,7 @@ function webapp_02() {
         var textLabTechInitials = document.getElementById("text-update-lab-tech-initials");
         var updateSelectProvenienceInnerHTML = document.getElementById("update-select-provenience-innerHTML");
        
-        //This code block catches errors
+        //Form validation begin
         
         var errorString = "";
 
@@ -851,11 +863,12 @@ function webapp_02() {
             textLabTechInitials.classList.remove("error_field");
         }
 
-
         if (errorString.length != 0 || errorString !== "") {
             alert(errorString);
             return;
         }
+
+        //Form validation end
 
         var url = 'http://localhost:5008/UpdateArtifact?artifactId=' + textArtifactId.value + '&periodName=' + updatePeriod.value + '&level1Id=' + updateSelectLevel1InnerHTML.value + '&level2Id=' + updateSelectLevel2InnerHTML.value + '&level3Id=' + updateSelectLevel3InnerHTML.value + '&level4Id=' + updateSelectLevel4InnerHTML.value + '&additionalDescription=' + textAdditionalDescription.value + '&artifactCount=' + textArtifactCount.value + '&artifactWeight=' + textArtifactWeight.value + '&labTechInitials=' + textLabTechInitials.value + '&provenienceId=' + updateSelectProvenienceInnerHTML.value; 
 
@@ -934,8 +947,9 @@ function webapp_02() {
         textLabTechInitials.classList.remove("error_field");
 
     }
+//Update function end
+//Delete function begin
 
-    //Delete functions go here.
     function deleteArtifact(artifactId) {
 
         var url = 'http://localhost:5008/DeleteArtifact?artifactid=' + artifactId;
@@ -965,12 +979,8 @@ function webapp_02() {
         };
     };
 
-    // function deleteEmployeeCancel() {
-    //     var textEmployeeId = document.getElementById("text-delete-employee-id");
-    //     textEmployeeId.value = "";
-    // }
+//Delete function end
 
-    //Invoke searchEmployees() on load
     searchArtifacts();
     getProvenienceData()
     getLevel1Names();
@@ -982,8 +992,6 @@ function webapp_02() {
     getLevel2NamesForUpdate();
     getLevel3NamesForUpdate();
     getLevel4NamesForUpdate();
-
-    
 }
 
 webapp_02();

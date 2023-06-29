@@ -7,12 +7,6 @@ namespace webapi_01.Controllers;
 [Route("[controller]")]
 public class ProvenienceController : ControllerBase
 {
-    private readonly ILogger<WeatherForecastController> _logger;
-
-    public ProvenienceController(ILogger<WeatherForecastController> logger)
-    {
-        _logger = logger;
-    }
 
     [HttpGet]
     [Route("/GetProvenienceData")]

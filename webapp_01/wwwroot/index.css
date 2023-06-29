@@ -106,6 +106,7 @@ strong {
     width: 12%;
     margin-right: 13%;
 }
+
 #insert-header {
     text-align: center;
 }
@@ -142,6 +143,7 @@ strong {
     box-shadow: 0 0 0 0.25rem rgb(226, 130, 130);
 }
 
+
 /* Research Page */
 
 .research-links {
@@ -154,6 +156,7 @@ strong {
     display: block;
     margin-left: auto;
 }
+
 
 /* Under Construction Page */
 
@@ -168,8 +171,6 @@ strong {
     margin-top: 18vh;
 }
 
-/* For Loading spinner */
-
 .loader {
     margin: 0 auto;
     font-size: 150%;
@@ -180,6 +181,7 @@ strong {
     animation: mulShdSpin 1.1s infinite ease;
     transform: translateZ(0);
   }
+
   @keyframes mulShdSpin {
     0%,
     100% {
@@ -235,9 +237,8 @@ strong {
   }
 }
 
-/* ------------------ *\
-   NAVIGATION
-\* ------------------ */
+/*  Landing Nav Bar */
+
 nav {
   position: fixed;
   top: 0;
@@ -271,30 +272,9 @@ ul.nav li {
 .nav-bar .nav li a:hover {
   background: gray;
 }
-.nav-bar .nav li a:active {
-  background: #eee;
-}
-.nav-bar .request-btn {
-  line-height: 21px;
-  padding: 7px 20px;
-  margin: 23px 0px 0px 20px;
-  background: #f9f9f9;
-  border: 1px solid #eee;
-  color: #333;
-  font-weight: 600;
-  text-shadow: none;
-  box-shadow: none;
-  border-radius: 4px;
-}
-.nav-bar .request-btn:hover {
-  text-decoration: none;
-  background: #f0f7fc;
-  border-color: #cce3f2;
-}
 
-/* ------------------ *\
-   LANDING HEADER
-\* ------------------ */
+/* Landing Header */
+
 .landing-header {
   position: relative;
   margin-top: 80px; /*EQUAL TO NAV HEIGHT*/
@@ -325,38 +305,7 @@ ul.nav li {
   }
 }
 
-.landing-header p {
-  font-size: 21px;
-  margin: 0;
-}
-.landing-header span {
-  display: inline-block;
-}
-.landing-header .cta-btn {
-  display: inline-block;
-  padding: 16px 30px;
-  border-radius: 6px;
-  margin: 14px 7px 14px 0;
-  background: #3c97da;
-  color: #E3E6E0;
-  box-shadow: 0px 1px 7px rgba(0,50,100,0.25);
-}
-.landing-header .cta-btn:hover {
-  background: #60aae1;
-  text-decoration: none;
-  box-shadow: 0px 1px 5px rgba(0,50,100,0.2);
-}
-.landing-header .tour-link {
-  color: #333;
-  text-decoration: underline;
-}
-.landing-header .tour-link:hover {
-  color: #E3E6E0;
-}
-
-/* ------------------ *\
-   LANDING IMAGE
-\* ------------------ */
+/* Landing Image */
 
 .home-image-carousel {
   position: relative;

@@ -7,12 +7,6 @@ namespace webapi_01.Controllers;
 [Route("[controller]")]
 public class Level3Controller : ControllerBase
 {
-    private readonly ILogger<WeatherForecastController> _logger;
-
-    public Level3Controller(ILogger<WeatherForecastController> logger)
-    {
-        _logger = logger;
-    }
 
     [HttpGet]
     [Route("/GetLevel3Names")]

@@ -5,8 +5,16 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\dmsor\\Documents\\code\\archeology_project\\webapp_01\\wwwroot\\img\\logo-light.jpg",
+      "PackagePath": "staticwebassets\\img\\logo-light.jpg"
+    },
+    {
       "Id": "C:\\Users\\dmsor\\Documents\\code\\archeology_project\\webapp_01\\wwwroot\\img\\logo.jpg",
       "PackagePath": "staticwebassets\\img\\logo.jpg"
+    },
+    {
+      "Id": "C:\\Users\\dmsor\\Documents\\code\\archeology_project\\webapp_01\\wwwroot\\img\\test-units.JPG",
+      "PackagePath": "staticwebassets\\img\\test-units.JPG"
     },
     {
       "Id": "C:\\Users\\dmsor\\Documents\\code\\archeology_project\\webapp_01\\wwwroot\\img\\washita.jpg",
@@ -23,6 +31,10 @@
     {
       "Id": "C:\\Users\\dmsor\\Documents\\code\\archeology_project\\webapp_01\\wwwroot\\index.js",
       "PackagePath": "staticwebassets\\index.js"
+    },
+    {
+      "Id": "C:\\Users\\dmsor\\Documents\\code\\archeology_project\\webapp_01\\wwwroot\\pages\\landingPage.html",
+      "PackagePath": "staticwebassets\\pages\\landingPage.html"
     },
     {
       "Id": "C:\\Users\\dmsor\\Documents\\code\\archeology_project\\webapp_01\\wwwroot\\pages\\page.html",

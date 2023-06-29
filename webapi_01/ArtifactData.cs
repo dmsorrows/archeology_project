@@ -203,7 +203,6 @@ namespace webapi_01
         {
             string sql = "UPDATE ArtifactData SET PeriodName = @PeriodName, Level1Id = @Level1Id, Level2Id = @Level2Id, Level3Id = @Level3Id, Level4Id = @Level4Id, AdditionalDescription = @AdditionalDescription, ArtifactCount = @ArtifactCount, ArtifactWeight = @ArtifactWeight, LabTechInitials = @LabTechInitials, DateAnalyzed = @DateAnalyzed, ProvenienceId = @ProvenienceId WHERE ArtifactId = @ArtifactId;";
 
-
             SqlCommand sqlCommand = new SqlCommand(sql, sqlConnection);
             sqlCommand.CommandType = System.Data.CommandType.Text;
 
@@ -220,10 +219,8 @@ namespace webapi_01
             SqlParameter paramLabTechInitials = new SqlParameter("@LabTechInitials", artifact.LabTechInitials);
             SqlParameter paramDateAnalyzed = new SqlParameter("@DateAnalyzed", artifact.DateAnalyzed);
             SqlParameter paramProvenienceId = new SqlParameter("@ProvenienceId", artifact.ProvenienceId);
-
             SqlParameter paramArtifactId = new SqlParameter("@ArtifactId", artifact.ArtifactId);
 
-            
             paramPeriodName.DbType = System.Data.DbType.String;
             paramLevel1Id.DbType = System.Data.DbType.Int32;
             paramLevel2Id.DbType = System.Data.DbType.Int32;
