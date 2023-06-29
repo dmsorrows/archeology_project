@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "MEm7dE2+yVD0ep1ruv6ymdqe55fmA5/6WDo9zu8UogM=",
+  "Hash": "erKa5nA3/61LOA6PkBkVIq4VdRC+2LkJMDT74usyR6A=",
   "Source": "artifact_database",
   "BasePath": "_content/artifact_database",
   "Mode": "Default",
@@ -32,6 +32,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\dmsor\\Documents\\code\\archeology_project\\webapp_01\\wwwroot\\img\\logo.jpg",
+      "SourceId": "artifact_database",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\dmsor\\Documents\\code\\archeology_project\\webapp_01\\wwwroot\\",
+      "BasePath": "_content/artifact_database",
+      "RelativePath": "img/logo.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\logo.jpg"
     },
     {
       "Identity": "C:\\Users\\dmsor\\Documents\\code\\archeology_project\\webapp_01\\wwwroot\\img\\washita.jpg",

@@ -93,44 +93,11 @@ namespace webapi_01
             ProvenienceId = provenienceId;
         }
 
-        // public static List<ArtifactData> GetArtifacts(SqlConnection sqlConnection)
-        // {
-        //     List<ArtifactData> artifacts = new List<ArtifactData>();
-
-        //     string sql = "select ArtifactId, PeriodName, Level1Id, Level2Id, Level3Id, Level4Id, AdditionalDescription, ArtifactCount, ArtifactWeight, DateAnalyzed, ProvenienceId from ArtifactData;";
-        //     SqlCommand sqlCommand = new SqlCommand(sql, sqlConnection);
-        //     sqlCommand.CommandType = System.Data.CommandType.Text;
-        //     SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
-        //     while (sqlDataReader.Read())
-        //     {
-        //         ArtifactData artifact = new ArtifactData();
-
-        //         artifact.ArtifactId = Convert.ToInt32(sqlDataReader["ArtifactId"].ToString());
-        //         artifact.PeriodName = sqlDataReader["PeriodName"].ToString();
-        //         artifact.Level1Id = Convert.ToInt32(sqlDataReader["Level1Id"].ToString());
-        //         artifact.Level2Id = Convert.ToInt32(sqlDataReader["Level2Id"].ToString());
-        //         artifact.Level3Id = Convert.ToInt32(sqlDataReader["Level3Id"].ToString());
-        //         artifact.Level4Id = Convert.ToInt32(sqlDataReader["Level4Id"].ToString());
-        //         artifact.AdditionalDescription = sqlDataReader["AdditionalDescription"].ToString();
-        //         artifact.ArtifactCount = Convert.ToInt32(sqlDataReader["ArtifactCount"].ToString());
-        //         artifact.ArtifactWeight = Convert.ToDecimal(sqlDataReader["ArtifactWeight"].ToString());
-        //         artifact.LabTechInitials = sqlDataReader["LabTechInitials"].ToString();
-        //         artifact.DateAnalyzed = Convert.ToDateTime(sqlDataReader["DateAnalyzed"].ToString()); 
-        //         artifact.ProvenienceId = Convert.ToInt32(sqlDataReader["ProvenienceId"].ToString());
-
-        //         artifacts.Add(artifact);
-        //     }
-
-        //     return artifacts;
-        // }
-
-
         public static List<ArtifactData> SearchArtifacts(SqlConnection sqlConnection, string search = "", int pageSize = 10, int pageNumber = 1)
         {
             List<ArtifactData> artifacts = new List<ArtifactData>();
 
             string sql = "SELECT a.ArtifactId, p.ProjectNumber, p.SiteNumber, p.AccessionNumber, p.FieldSerialNumber, p.UnitNumber, p.Depth, p.ExcavationDate, aa.PeriodName, l1.Level1Id, l1.Level1Name, l2.Level2Id, l2.Level2Name, l3.Level3Id, l3.Level3Name, l4.Level4Id, l4.Level4Name, aa.AdditionalDescription, aa.ArtifactCount, aa.ArtifactWeight, aa.LabTechInitials, aa.DateAnalyzed, p.ProvenienceId, a.[Count] FROM (SELECT ArtifactId, count(*) over () AS [Count] FROM ArtifactData WHERE PeriodName LIKE '%' + @Search + '%' or AdditionalDescription LIKE '%' + @Search + '%' ORDER BY ArtifactId offset @PageSize * (@PageNumber - 1) rows fetch next @PageSize rows only) AS a LEFT OUTER JOIN ArtifactData AS aa ON aa.ArtifactId = a.ArtifactId INNER JOIN Provenience AS p ON aa.ProvenienceId = p.ProvenienceId INNER JOIN Level1 AS l1 ON aa.Level1Id = l1.Level1Id INNER JOIN Level2 AS l2 ON aa.Level2Id = l2.Level2Id INNER JOIN Level3 AS l3 ON aa.Level3Id = l3.Level3Id LEFT OUTER JOIN Level4 AS l4 ON aa.Level4Id = l4.Level4Id ORDER BY p.FieldSerialNumber, aa.PeriodName, l1.Level1Name, l2.Level2Name, l3.Level3Name, l4.Level4Name;";
-            // string sql = "select p.ArtifactId, a.PeriodName, a.Level1Id, a.Level2Id, a.Level3Id, a.Level4Id, a.AdditionalDescription, a.ArtifactCount, a.ArtifactWeight, a.LabTechInitials, a.DateAnalyzed, a.ProvenienceId, p.[Count] from (select ArtifactId, count(*) over () AS [Count] from ArtifactData where PeriodName like '%' + @Search + '%' or AdditionalDescription like '%' + @Search + '%' order by ArtifactId offset @PageSize * (@PageNumber - 1) rows fetch next @PageSize rows only) p join ArtifactData a on p.ArtifactId = a.ArtifactId order by 1;";
 
             SqlCommand sqlCommand = new SqlCommand(sql, sqlConnection);
             sqlCommand.CommandType = System.Data.CommandType.Text;
@@ -182,7 +149,6 @@ namespace webapi_01
 
             return artifacts;
         }
-
 
         public static int InsertArtifact(ArtifactData artifact, SqlConnection sqlConnection)
         {

@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\dmsor\\Documents\\code\\archeology_project\\webapp_01\\wwwroot\\img\\logo.jpg",
+      "PackagePath": "staticwebassets\\img\\logo.jpg"
+    },
+    {
       "Id": "C:\\Users\\dmsor\\Documents\\code\\archeology_project\\webapp_01\\wwwroot\\img\\washita.jpg",
       "PackagePath": "staticwebassets\\img\\washita.jpg"
     },
